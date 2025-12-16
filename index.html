@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BrandOS - Documentacao Oficial | Academia Lendaria</title>
+  <title>BrandOS - Documentacao Oficial Completa | Academia Lendaria</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
   <script>
     tailwind.config = {
@@ -16,18 +16,22 @@
           fontFamily: {
             sans: ['Inter', 'system-ui', 'sans-serif'],
             serif: ['Source Serif 4', 'Georgia', 'serif'],
+            mono: ['JetBrains Mono', 'monospace'],
           },
           colors: {
-            primary: { DEFAULT: '#C9B298', 50: '#F2EBE4', 100: '#E8DED2', 200: '#D9CBB8', 300: '#C9B298', 400: '#B89F7E', 500: '#A78C64', 600: '#8A7352', 700: '#6D5A40', 800: '#50412E', 900: '#383025' },
+            primary: { DEFAULT: '#C9B298', 50: '#F2EBE4', 100: '#E8DED2', 200: '#D9CBB8', 300: '#C9B298' },
             background: '#0A0A0A',
             foreground: '#FAFAFA',
             card: '#121212',
+            'card-alt': '#1A1A1A',
             muted: '#171717',
             'muted-foreground': '#A3A3A3',
             border: '#262626',
             accent: '#5856D6',
             success: '#34C759',
             destructive: '#FF3B30',
+            warning: '#FF9500',
+            info: '#007AFF',
           }
         }
       }
@@ -37,62 +41,499 @@
   <style>
     body { font-family: 'Inter', system-ui, sans-serif; background-color: #0A0A0A; color: #FAFAFA; }
     .font-serif { font-family: 'Source Serif 4', Georgia, serif; }
+    .font-mono { font-family: 'JetBrains Mono', monospace; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     .animate-fade-in { animation: fadeIn 0.6s ease-out forwards; }
-    .stagger-1 { animation-delay: 100ms; } .stagger-2 { animation-delay: 200ms; } .stagger-3 { animation-delay: 300ms; } .stagger-4 { animation-delay: 400ms; }
+    .stagger-1 { animation-delay: 100ms; } .stagger-2 { animation-delay: 200ms; } .stagger-3 { animation-delay: 300ms; }
     .gradient-gold { background: linear-gradient(135deg, #C9B298, #E8DED2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .glow-gold { box-shadow: 0 0 40px rgba(201, 178, 152, 0.15); }
+    .glow-gold { box-shadow: 0 0 60px rgba(201, 178, 152, 0.15); }
     .glow-accent { box-shadow: 0 0 40px rgba(88, 86, 214, 0.2); }
     .section-divider { height: 1px; background: linear-gradient(90deg, transparent, #262626 20%, #262626 80%, transparent); }
     .scroll-progress { position: fixed; top: 0; left: 0; height: 2px; background: #C9B298; z-index: 9999; }
+    .pipeline-line { background: linear-gradient(180deg, #5856D6 0%, #5856D6 50%, transparent 50%, transparent 100%); background-size: 2px 8px; }
+    .agent-card { transition: all 0.3s ease; }
+    .agent-card:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(88, 86, 214, 0.15); }
   </style>
 </head>
 <body class="antialiased">
   <div class="scroll-progress" id="scrollProgress"></div>
 
-  <!-- HERO -->
-  <section class="min-h-screen flex flex-col justify-center items-center px-6 py-24 relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-b from-background via-background to-card"></div>
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 blur-[150px] rounded-full"></div>
-
-    <div class="relative z-10 max-w-4xl mx-auto text-center space-y-8">
-      <div class="opacity-0 animate-fade-in flex justify-center mb-8">
-        <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="none" viewBox="0 0 320 320" class="text-primary">
+  <!-- NAV -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border/50">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 320 320" class="text-primary">
           <path fill="currentColor" d="M247.258 18.749A63.908 63.908 0 0 0 202.029 0h-84.091a63.906 63.906 0 0 0-45.229 18.749L18.748 72.596C6.749 84.596 0 100.961 0 117.944v84.095c0 16.866 6.75 33.232 18.748 45.231l53.978 53.981A63.907 63.907 0 0 0 117.954 320h84.092a63.908 63.908 0 0 0 45.228-18.749l53.978-53.981A63.91 63.91 0 0 0 320 202.039v-84.095a63.913 63.913 0 0 0-18.748-45.231l-53.978-53.98-.016.016Zm3.749 45.964c2 0 3.117.25 3.866.367.867 3.366 1 16-10.865 39.865-5.5 11.116-12.749 22.732-21.248 34.481a410.027 410.027 0 0 0-20.364-21.865c-7.25-7.25-14.499-14-21.865-20.366 7.616-5.5 15.249-10.5 22.731-14.866 27.231-15.866 42.479-17.499 47.729-17.499v-.117h.016Zm-44.362 95.212c-6.999 8.25-14.498 16.366-22.364 24.365-7.999 8-16.115 15.5-24.364 22.366-8.249-7-16.365-14.366-24.364-22.366-8-7.999-15.499-16.115-22.365-24.365 6.999-8.25 14.499-16.366 22.365-24.365 7.865-8 16.115-15.5 24.364-22.366 8.249 7 16.365 14.366 24.364 22.366 7.999 7.999 15.498 16.115 22.364 24.365ZM90.707 36.865c7.25-7.25 16.865-11.25 27.114-11.25h84.091c10.249 0 19.865 4 27.114 11.25l4.616 4.616c-20.997 5.117-46.978 18.866-73.842 39.115-26.864-20.25-52.844-33.865-73.842-39.115l4.616-4.616h.133ZM65.093 65.097c.617-.117 1.867-.367 3.867-.367 15.865 0 38.612 12.25 47.728 17.5 7.499 4.365 15.115 9.365 22.731 14.865-7.366 6.366-14.615 13.116-21.865 20.366a410.071 410.071 0 0 0-20.364 21.865c-8.5-11.749-15.748-23.365-21.248-34.481C64.077 80.979 64.193 68.363 65.077 64.98v.117h.016Zm-28.23 164.058c-7.25-7.25-11.249-16.866-11.249-27.116v-84.095c0-10.25 4-19.866 11.249-27.115l4.616-4.617c5.116 20.999 18.865 46.981 38.98 73.846-20.249 26.866-33.864 52.848-38.98 73.847l-4.616-4.617v-.133Zm31.98 25.982c-2 0-3.117-.25-3.866-.367-.867-3.366-1-15.999 10.865-39.865 5.5-11.116 12.749-22.732 21.248-34.481a410.071 410.071 0 0 0 20.364 21.865c7.25 7.25 14.499 14 21.865 20.366-7.616 5.5-15.249 10.5-22.731 14.866-27.23 15.866-42.48 17.499-47.728 17.499v.117h-.017Zm160.3 27.865c-7.249 7.25-16.865 11.249-27.114 11.249h-84.091c-10.249 0-19.865-3.999-27.114-11.249l-4.616-4.617c20.997-5.116 46.978-18.865 73.842-39.114 26.864 20.249 52.845 33.865 73.842 39.114l-4.616 4.617h-.133Zm25.614-28.232c-.617.117-1.867.367-3.866.367-15.865 0-38.613-12.25-47.729-17.499-7.499-4.367-15.115-9.367-22.731-14.866a410.464 410.464 0 0 0 21.865-20.366 410.027 410.027 0 0 0 20.364-21.865c8.499 11.749 15.748 23.365 21.248 34.481 11.865 23.866 11.749 36.482 10.865 39.865v-.117h-.016Zm39.479-52.864c0 10.25-4 19.866-11.249 27.115l-4.616 4.617c-5.116-20.999-18.865-46.981-38.979-73.846 20.248-26.866 33.863-52.848 38.979-73.847l4.616 4.617c7.249 7.25 11.249 16.866 11.249 27.115v84.229Z"/>
         </svg>
+        <span class="font-bold text-lg">BrandOS</span>
       </div>
+      <a href="https://branding-os-nu.vercel.app/" target="_blank" class="px-4 py-2 rounded-full bg-accent hover:bg-accent/90 text-white text-sm font-semibold transition-colors">
+        Acessar App
+      </a>
+    </div>
+  </nav>
 
-      <div class="opacity-0 animate-fade-in stagger-1">
+  <!-- HERO -->
+  <section class="min-h-screen flex flex-col justify-center items-center px-6 pt-32 pb-24 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-background via-background to-card"></div>
+    <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent/5 blur-[200px] rounded-full"></div>
+
+    <div class="relative z-10 max-w-4xl mx-auto text-center space-y-8">
+      <div class="opacity-0 animate-fade-in">
         <span class="inline-flex items-center px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider border border-primary/30 bg-primary/10 text-primary">
-          Documentacao Oficial
+          Sistema de Geracao de Assets
         </span>
       </div>
 
-      <h1 class="opacity-0 animate-fade-in stagger-2 text-5xl md:text-7xl font-bold tracking-tight">
+      <h1 class="opacity-0 animate-fade-in stagger-1 text-5xl md:text-7xl font-extrabold tracking-tight leading-tight">
         <span class="gradient-gold">BrandOS</span>
+        <br>
+        <span class="text-3xl md:text-4xl font-semibold text-muted-foreground">6 Agentes de IA. 1 Resultado Perfeito.</span>
       </h1>
 
-      <p class="opacity-0 animate-fade-in stagger-3 text-xl md:text-2xl text-muted-foreground font-serif max-w-2xl mx-auto leading-relaxed">
-        O sistema que cria assets de marketing em minutos, nao horas.
+      <p class="opacity-0 animate-fade-in stagger-2 text-xl text-muted-foreground font-serif max-w-2xl mx-auto leading-relaxed">
+        Nao e um gerador de imagens. E um <strong class="text-foreground">sistema rigoroso</strong> onde cada decisao e justificada, cada elemento e rastreado, e cada output e validado.
       </p>
 
-      <div class="opacity-0 animate-fade-in stagger-4 flex flex-wrap justify-center gap-8 md:gap-16 pt-8">
-        <div class="text-center">
-          <div class="text-4xl md:text-5xl font-bold text-primary">2-3</div>
-          <div class="text-sm text-muted-foreground mt-1">minutos</div>
+      <div class="opacity-0 animate-fade-in stagger-3 flex flex-wrap justify-center gap-6 pt-4">
+        <div class="px-6 py-4 bg-card rounded-xl border border-border">
+          <div class="text-3xl font-bold text-primary">6</div>
+          <div class="text-xs text-muted-foreground mt-1">Agentes Especializados</div>
         </div>
-        <div class="text-center">
-          <div class="text-4xl md:text-5xl font-bold text-foreground">vs</div>
+        <div class="px-6 py-4 bg-card rounded-xl border border-border">
+          <div class="text-3xl font-bold text-foreground">4</div>
+          <div class="text-xs text-muted-foreground mt-1">Templates Inteligentes</div>
         </div>
-        <div class="text-center">
-          <div class="text-4xl md:text-5xl font-bold text-muted-foreground line-through decoration-destructive/50">2+ horas</div>
-          <div class="text-sm text-muted-foreground mt-1">antes</div>
+        <div class="px-6 py-4 bg-card rounded-xl border border-border">
+          <div class="text-3xl font-bold text-success">100%</div>
+          <div class="text-xs text-muted-foreground mt-1">On-Brand Garantido</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider mx-auto max-w-5xl"></div>
+
+  <!-- O CONCEITO -->
+  <section class="py-24 px-6" id="conceito">
+    <div class="max-w-5xl mx-auto space-y-12">
+      <div class="text-center space-y-4">
+        <span class="text-xs font-semibold uppercase tracking-wider text-accent">O Conceito Central</span>
+        <h2 class="text-3xl md:text-4xl font-bold">Cadeia de Agentes Especializados</h2>
+        <p class="text-lg text-muted-foreground font-serif max-w-2xl mx-auto">Cada agente faz UMA coisa muito bem. O output de um vira input do proximo. Resultado: sinergia total.</p>
+      </div>
+
+      <!-- Pipeline Visual -->
+      <div class="relative">
+        <div class="grid gap-4">
+          <!-- Agent 1 -->
+          <div class="agent-card flex items-start gap-4 p-6 bg-card rounded-xl border border-border">
+            <div class="w-12 h-12 rounded-xl bg-accent flex items-center justify-center text-white font-bold shrink-0">1</div>
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-2">
+                <h3 class="font-bold text-lg">Brand Strategist</h3>
+                <span class="text-xs px-2 py-0.5 bg-accent/10 text-accent rounded">Decisor</span>
+              </div>
+              <p class="text-sm text-muted-foreground mb-3">O estrategista. Analisa o briefing e toma as decisoes de alto nivel.</p>
+              <div class="grid md:grid-cols-2 gap-4 text-xs">
+                <div class="p-3 bg-muted rounded-lg">
+                  <div class="font-semibold text-muted-foreground mb-1">RECEBE:</div>
+                  <div>Brief do usuario, config da marca, objetivo</div>
+                </div>
+                <div class="p-3 bg-accent/5 rounded-lg border border-accent/20">
+                  <div class="font-semibold text-accent mb-1">PRODUZ:</div>
+                  <div>Template escolhido, arco emocional, constraints para todos os outros agentes</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Agent 2 -->
+          <div class="agent-card flex items-start gap-4 p-6 bg-card rounded-xl border border-border">
+            <div class="w-12 h-12 rounded-xl bg-accent/80 flex items-center justify-center text-white font-bold shrink-0">2</div>
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-2">
+                <h3 class="font-bold text-lg">Story Architect</h3>
+                <span class="text-xs px-2 py-0.5 bg-accent/10 text-accent rounded">Estruturador</span>
+              </div>
+              <p class="text-sm text-muted-foreground mb-3">O arquiteto da historia. Define o proposito de cada slide e como eles se conectam.</p>
+              <div class="grid md:grid-cols-2 gap-4 text-xs">
+                <div class="p-3 bg-muted rounded-lg">
+                  <div class="font-semibold text-muted-foreground mb-1">RECEBE:</div>
+                  <div>Blueprint do Strategist + brief original</div>
+                </div>
+                <div class="p-3 bg-accent/5 rounded-lg border border-accent/20">
+                  <div class="font-semibold text-accent mb-1">PRODUZ:</div>
+                  <div>Estrutura slide-by-slide com proposito, beat emocional, direcao visual</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Agent 3 -->
+          <div class="agent-card flex items-start gap-4 p-6 bg-card rounded-xl border border-border">
+            <div class="w-12 h-12 rounded-xl bg-accent/60 flex items-center justify-center text-white font-bold shrink-0">3</div>
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-2">
+                <h3 class="font-bold text-lg">Copywriter</h3>
+                <span class="text-xs px-2 py-0.5 bg-accent/10 text-accent rounded">Escritor</span>
+              </div>
+              <p class="text-sm text-muted-foreground mb-3">O redator. Escreve headlines, body copy e CTAs respeitando limites de caracteres e tom da marca.</p>
+              <div class="grid md:grid-cols-2 gap-4 text-xs">
+                <div class="p-3 bg-muted rounded-lg">
+                  <div class="font-semibold text-muted-foreground mb-1">RECEBE:</div>
+                  <div>Estrutura do Architect + constraints de copy (max chars, estilo)</div>
+                </div>
+                <div class="p-3 bg-accent/5 rounded-lg border border-accent/20">
+                  <div class="font-semibold text-accent mb-1">PRODUZ:</div>
+                  <div>Copy completo para cada slide: headline (max 60 chars), body, bullets, CTA</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Agent 4 -->
+          <div class="agent-card flex items-start gap-4 p-6 bg-card rounded-xl border border-border">
+            <div class="w-12 h-12 rounded-xl bg-accent/40 flex items-center justify-center text-foreground font-bold shrink-0">4</div>
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-2">
+                <h3 class="font-bold text-lg">Visual Compositor</h3>
+                <span class="text-xs px-2 py-0.5 bg-accent/10 text-accent rounded">Designer</span>
+              </div>
+              <p class="text-sm text-muted-foreground mb-3">O diretor de arte. Especifica cores, fontes, posicoes - tudo pixel-perfect.</p>
+              <div class="grid md:grid-cols-2 gap-4 text-xs">
+                <div class="p-3 bg-muted rounded-lg">
+                  <div class="font-semibold text-muted-foreground mb-1">RECEBE:</div>
+                  <div>Copy do Copywriter + paleta da marca + layouts disponiveis</div>
+                </div>
+                <div class="p-3 bg-accent/5 rounded-lg border border-accent/20">
+                  <div class="font-semibold text-accent mb-1">PRODUZ:</div>
+                  <div>Specs visuais: layout ID, cores, fontes, posicao X/Y de cada elemento</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Agent 5 -->
+          <div class="agent-card flex items-start gap-4 p-6 bg-card rounded-xl border border-border">
+            <div class="w-12 h-12 rounded-xl bg-warning/20 flex items-center justify-center text-warning font-bold shrink-0">5</div>
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-2">
+                <h3 class="font-bold text-lg">Quality Validator</h3>
+                <span class="text-xs px-2 py-0.5 bg-warning/10 text-warning rounded">Validador</span>
+              </div>
+              <p class="text-sm text-muted-foreground mb-3">O controle de qualidade. Valida se tudo esta on-brand: cores, fonts, contraste, voz.</p>
+              <div class="grid md:grid-cols-2 gap-4 text-xs">
+                <div class="p-3 bg-muted rounded-lg">
+                  <div class="font-semibold text-muted-foreground mb-1">VALIDA:</div>
+                  <div>Headlines presentes? Cores no palette? Contraste WCAG AA? Tom alinhado?</div>
+                </div>
+                <div class="p-3 bg-warning/5 rounded-lg border border-warning/20">
+                  <div class="font-semibold text-warning mb-1">PRODUZ:</div>
+                  <div>Score 0-100, lista de checks, warnings, erros criticos se houver</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Agent 6 -->
+          <div class="agent-card flex items-start gap-4 p-6 bg-card rounded-xl border border-border">
+            <div class="w-12 h-12 rounded-xl bg-success/20 flex items-center justify-center text-success font-bold shrink-0">6</div>
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-2">
+                <h3 class="font-bold text-lg">Render Engine</h3>
+                <span class="text-xs px-2 py-0.5 bg-success/10 text-success rounded">Finalizador</span>
+              </div>
+              <p class="text-sm text-muted-foreground mb-3">O renderizador. Transforma specs em HTML/CSS real, pronto pra exportar.</p>
+              <div class="grid md:grid-cols-2 gap-4 text-xs">
+                <div class="p-3 bg-muted rounded-lg">
+                  <div class="font-semibold text-muted-foreground mb-1">RECEBE:</div>
+                  <div>Visual specs do Compositor (layout ID, posicoes, estilos)</div>
+                </div>
+                <div class="p-3 bg-success/5 rounded-lg border border-success/20">
+                  <div class="font-semibold text-success mb-1">PRODUZ:</div>
+                  <div>HTML + CSS completo, preview de cada slide, pronto pra export PNG</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider mx-auto max-w-5xl"></div>
+
+  <!-- BRAND CONFIGURATION -->
+  <section class="py-24 px-6" id="brand">
+    <div class="max-w-5xl mx-auto space-y-12">
+      <div class="text-center space-y-4">
+        <span class="text-xs font-semibold uppercase tracking-wider text-primary">Configuracao de Marca</span>
+        <h2 class="text-3xl md:text-4xl font-bold">3 Pilares do Brand Config</h2>
+        <p class="text-lg text-muted-foreground font-serif max-w-2xl mx-auto">Configure uma vez, use sempre. O sistema CONHECE sua marca.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- Pilar 1 -->
+        <div class="bg-card rounded-xl border border-border p-6 space-y-4">
+          <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path></svg>
+          </div>
+          <h3 class="font-bold text-lg">Identidade Visual</h3>
+          <p class="text-sm text-muted-foreground font-serif">40% do score de completude</p>
+          <ul class="text-sm space-y-2">
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Logo (PNG/SVG)</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Cor primaria, secundaria, accent</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Fonte heading + body</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> WCAG compliance</li>
+          </ul>
+        </div>
+
+        <!-- Pilar 2 -->
+        <div class="bg-card rounded-xl border border-border p-6 space-y-4">
+          <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center">
+            <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+          </div>
+          <h3 class="font-bold text-lg">Brand Voice</h3>
+          <p class="text-sm text-muted-foreground font-serif">30% do score de completude</p>
+          <ul class="text-sm space-y-2">
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-accent rounded-full"></span> Atributos (professional, bold, etc)</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-accent rounded-full"></span> Tone guidelines</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-accent rounded-full"></span> Exemplos de copy (bom/ruim)</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-accent rounded-full"></span> Frases a evitar</li>
+          </ul>
+        </div>
+
+        <!-- Pilar 3 -->
+        <div class="bg-card rounded-xl border border-border p-6 space-y-4">
+          <div class="w-12 h-12 rounded-xl bg-success/10 flex items-center justify-center">
+            <svg class="w-6 h-6 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+          </div>
+          <h3 class="font-bold text-lg">Exemplos</h3>
+          <p class="text-sm text-muted-foreground font-serif">30% do score de completude</p>
+          <ul class="text-sm space-y-2">
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-success rounded-full"></span> Upload de carousels existentes</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-success rounded-full"></span> Ads, posts, slides</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-success rounded-full"></span> Anotacoes do que e on-brand</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-success rounded-full"></span> Minimo 3 exemplos</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider mx-auto max-w-5xl"></div>
+
+  <!-- TEMPLATES -->
+  <section class="py-24 px-6" id="templates">
+    <div class="max-w-5xl mx-auto space-y-12">
+      <div class="text-center space-y-4">
+        <span class="text-xs font-semibold uppercase tracking-wider text-info">Templates Inteligentes</span>
+        <h2 class="text-3xl md:text-4xl font-bold">4 Estruturas Comprovadas</h2>
+        <p class="text-lg text-muted-foreground font-serif max-w-2xl mx-auto">O Brand Strategist escolhe automaticamente baseado no objetivo.</p>
+      </div>
+
+      <!-- Template 1 -->
+      <div class="bg-card rounded-xl border border-border overflow-hidden">
+        <div class="p-6 border-b border-border flex items-center justify-between">
+          <div>
+            <h3 class="font-bold text-xl">Product Launch</h3>
+            <p class="text-sm text-muted-foreground">Lancamentos, cursos, ofertas, Black Friday</p>
+          </div>
+          <span class="px-3 py-1 bg-destructive/10 text-destructive rounded-full text-sm font-semibold">8 slides</span>
+        </div>
+        <div class="p-6">
+          <div class="grid grid-cols-4 md:grid-cols-8 gap-2">
+            <div class="p-2 bg-muted rounded text-center">
+              <div class="text-xs font-semibold">1</div>
+              <div class="text-[10px] text-muted-foreground">Cover</div>
+              <div class="text-[10px] text-accent">curiosity</div>
+            </div>
+            <div class="p-2 bg-muted rounded text-center">
+              <div class="text-xs font-semibold">2</div>
+              <div class="text-[10px] text-muted-foreground">Problem</div>
+              <div class="text-[10px] text-accent">pain</div>
+            </div>
+            <div class="p-2 bg-muted rounded text-center">
+              <div class="text-xs font-semibold">3</div>
+              <div class="text-[10px] text-muted-foreground">Agitation</div>
+              <div class="text-[10px] text-accent">frustration</div>
+            </div>
+            <div class="p-2 bg-muted rounded text-center">
+              <div class="text-xs font-semibold">4</div>
+              <div class="text-[10px] text-muted-foreground">Solution</div>
+              <div class="text-[10px] text-accent">hope</div>
+            </div>
+            <div class="p-2 bg-muted rounded text-center">
+              <div class="text-xs font-semibold">5</div>
+              <div class="text-[10px] text-muted-foreground">Benefits</div>
+              <div class="text-[10px] text-accent">excitement</div>
+            </div>
+            <div class="p-2 bg-muted rounded text-center">
+              <div class="text-xs font-semibold">6</div>
+              <div class="text-[10px] text-muted-foreground">Proof</div>
+              <div class="text-[10px] text-accent">trust</div>
+            </div>
+            <div class="p-2 bg-muted rounded text-center">
+              <div class="text-xs font-semibold">7</div>
+              <div class="text-[10px] text-muted-foreground">Offer</div>
+              <div class="text-[10px] text-accent">urgency</div>
+            </div>
+            <div class="p-2 bg-muted rounded text-center">
+              <div class="text-xs font-semibold">8</div>
+              <div class="text-[10px] text-muted-foreground">CTA</div>
+              <div class="text-[10px] text-accent">empower</div>
+            </div>
+          </div>
+          <p class="text-xs text-muted-foreground mt-4 font-mono">Estrutura PAS (Problem-Agitation-Solution) + Social Proof + Oferta</p>
         </div>
       </div>
 
-      <!-- CTA -->
-      <div class="opacity-0 animate-fade-in stagger-4 pt-8">
-        <a href="https://branding-os-nu.vercel.app/" target="_blank" class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-accent hover:bg-accent/90 text-white font-semibold transition-colors">
+      <!-- Template 2 -->
+      <div class="bg-card rounded-xl border border-border overflow-hidden">
+        <div class="p-6 border-b border-border flex items-center justify-between">
+          <div>
+            <h3 class="font-bold text-xl">Educational</h3>
+            <p class="text-sm text-muted-foreground">Dicas, tutoriais, how-to, conteudo educacional</p>
+          </div>
+          <span class="px-3 py-1 bg-info/10 text-info rounded-full text-sm font-semibold">7 slides</span>
+        </div>
+        <div class="p-6">
+          <div class="grid grid-cols-7 gap-2">
+            <div class="p-2 bg-muted rounded text-center">
+              <div class="text-xs font-semibold">1</div>
+              <div class="text-[10px] text-muted-foreground">Cover</div>
+            </div>
+            <div class="p-2 bg-muted rounded text-center">
+              <div class="text-xs font-semibold">2</div>
+              <div class="text-[10px] text-muted-foreground">Context</div>
+            </div>
+            <div class="p-2 bg-info/10 rounded text-center border border-info/20">
+              <div class="text-xs font-semibold text-info">3</div>
+              <div class="text-[10px] text-info">Dica 1</div>
+            </div>
+            <div class="p-2 bg-info/10 rounded text-center border border-info/20">
+              <div class="text-xs font-semibold text-info">4</div>
+              <div class="text-[10px] text-info">Dica 2</div>
+            </div>
+            <div class="p-2 bg-info/10 rounded text-center border border-info/20">
+              <div class="text-xs font-semibold text-info">5</div>
+              <div class="text-[10px] text-info">Dica 3</div>
+            </div>
+            <div class="p-2 bg-muted rounded text-center">
+              <div class="text-xs font-semibold">6</div>
+              <div class="text-[10px] text-muted-foreground">Bridge</div>
+            </div>
+            <div class="p-2 bg-muted rounded text-center">
+              <div class="text-xs font-semibold">7</div>
+              <div class="text-[10px] text-muted-foreground">CTA</div>
+            </div>
+          </div>
+          <p class="text-xs text-muted-foreground mt-4 font-mono">Ensina algo valioso antes de vender. CTA de baixo comprometimento.</p>
+        </div>
+      </div>
+
+      <!-- Templates 3-4 compact -->
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-card rounded-xl border border-border p-6">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="font-bold">Social Proof</h3>
+            <span class="px-2 py-0.5 bg-warning/10 text-warning rounded text-xs font-semibold">6 slides</span>
+          </div>
+          <p class="text-sm text-muted-foreground mb-3">Depoimentos, cases, resultados de clientes</p>
+          <div class="text-xs font-mono text-muted-foreground">Cover → Depoimento 1 → Depoimento 2 → Stats → Bridge → CTA</div>
+        </div>
+        <div class="bg-card rounded-xl border border-border p-6">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="font-bold">Announcement</h3>
+            <span class="px-2 py-0.5 bg-success/10 text-success rounded text-xs font-semibold">5 slides</span>
+          </div>
+          <p class="text-sm text-muted-foreground mb-3">Novidades, features, updates, lancamentos</p>
+          <div class="text-xs font-mono text-muted-foreground">Cover → O que e → Por que importa → Detalhes → CTA</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider mx-auto max-w-5xl"></div>
+
+  <!-- EXEMPLO REAL -->
+  <section class="py-24 px-6" id="exemplo">
+    <div class="max-w-5xl mx-auto space-y-12">
+      <div class="text-center space-y-4">
+        <span class="text-xs font-semibold uppercase tracking-wider text-success">Exemplo Real</span>
+        <h2 class="text-3xl md:text-4xl font-bold">Da Ideia ao Carousel Pronto</h2>
+      </div>
+
+      <!-- Input -->
+      <div class="bg-card rounded-xl border border-border p-6 space-y-4">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-lg bg-muted flex items-center justify-center text-sm font-bold">IN</div>
+          <span class="font-semibold">Input do Usuario</span>
+        </div>
+        <div class="p-4 bg-muted rounded-lg font-mono text-sm">
+          <div class="text-muted-foreground mb-2"># Produto</div>
+          <div>Dominando O Obsidian - R$ 288</div>
+          <div class="text-muted-foreground mt-4 mb-2"># Objetivo</div>
+          <div>Conversao | Angulo: Problema-Solucao</div>
+          <div class="text-muted-foreground mt-4 mb-2"># Mensagem</div>
+          <div>"Voce perde 2h por dia procurando informacoes. Com o Segundo Cerebro, tudo esta a 1 clique."</div>
+        </div>
+      </div>
+
+      <!-- Process -->
+      <div class="grid md:grid-cols-3 gap-4">
+        <div class="bg-card-alt rounded-lg p-4 border border-border">
+          <div class="text-xs text-accent font-semibold mb-2">STRATEGIST DECIDE:</div>
+          <div class="text-sm">Template: Product Launch (8 slides)</div>
+          <div class="text-sm">Arco: curiosity → pain → hope → empower</div>
+        </div>
+        <div class="bg-card-alt rounded-lg p-4 border border-border">
+          <div class="text-xs text-accent font-semibold mb-2">ARCHITECT ESTRUTURA:</div>
+          <div class="text-sm">Slide 1: "Voce sabia que perde 2h/dia?"</div>
+          <div class="text-sm">Slide 2: Estatistica de 730h/ano...</div>
+        </div>
+        <div class="bg-card-alt rounded-lg p-4 border border-border">
+          <div class="text-xs text-accent font-semibold mb-2">COPYWRITER ESCREVE:</div>
+          <div class="text-sm font-serif italic">"730 horas por ano. E o tempo que voce perde procurando informacoes que ja tem."</div>
+        </div>
+      </div>
+
+      <!-- Output -->
+      <div class="bg-card rounded-xl border border-success/30 p-6 space-y-4 glow-gold">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-lg bg-success/20 flex items-center justify-center text-sm font-bold text-success">OUT</div>
+          <span class="font-semibold">Output Final</span>
+          <span class="ml-auto text-xs px-2 py-1 bg-success/10 text-success rounded">Score: 94/100</span>
+        </div>
+        <div class="grid grid-cols-4 md:grid-cols-8 gap-2">
+          <div class="aspect-[4/5] bg-black rounded flex items-center justify-center text-white text-xs p-2 text-center">Voce sabia que perde 2h/dia?</div>
+          <div class="aspect-[4/5] bg-gray-900 rounded flex items-center justify-center text-white text-xs p-2 text-center">730h</div>
+          <div class="aspect-[4/5] bg-gray-800 rounded flex items-center justify-center text-white text-xs p-2 text-center">3 dores</div>
+          <div class="aspect-[4/5] bg-gray-700 rounded flex items-center justify-center text-white text-xs p-2 text-center">Segundo Cerebro</div>
+          <div class="aspect-[4/5] bg-gray-600 rounded flex items-center justify-center text-white text-xs p-2 text-center">3 beneficios</div>
+          <div class="aspect-[4/5] bg-gray-500 rounded flex items-center justify-center text-white text-xs p-2 text-center">"Mudou minha vida"</div>
+          <div class="aspect-[4/5] bg-primary/20 rounded flex items-center justify-center text-primary text-xs p-2 text-center">R$ 288</div>
+          <div class="aspect-[4/5] bg-primary rounded flex items-center justify-center text-black text-xs p-2 text-center font-bold">Comecar Agora</div>
+        </div>
+        <div class="flex items-center gap-4 text-xs text-muted-foreground">
+          <span>HTML/CSS pronto</span>
+          <span>Export PNG</span>
+          <span>8 slides em 2 minutos</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider mx-auto max-w-5xl"></div>
+
+  <!-- CTA FINAL -->
+  <section class="py-24 px-6">
+    <div class="max-w-3xl mx-auto text-center space-y-8">
+      <h2 class="text-3xl md:text-4xl font-bold">Pronto para experimentar?</h2>
+      <p class="text-lg text-muted-foreground font-serif">6 agentes trabalhando em sinergia. 4 templates comprovados. 100% on-brand.</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="https://branding-os-nu.vercel.app/" target="_blank" class="px-8 py-4 rounded-full bg-accent hover:bg-accent/90 text-white font-semibold transition-colors inline-flex items-center gap-2">
           Acessar BrandOS
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
         </a>
@@ -100,411 +541,16 @@
     </div>
   </section>
 
-  <div class="section-divider mx-auto max-w-4xl"></div>
-
-  <!-- O PROBLEMA -->
-  <section class="py-24 px-6" id="problema">
-    <div class="max-w-4xl mx-auto space-y-8">
-      <div class="space-y-4">
-        <span class="text-xs font-semibold uppercase tracking-wider text-destructive/80">O Problema</span>
-        <h2 class="text-3xl md:text-4xl font-bold tracking-tight">O ciclo que ninguem aguentava mais</h2>
-      </div>
-
-      <p class="text-lg text-muted-foreground font-serif leading-relaxed">
-        Cada carousel, post ou anuncio passava por um fluxo fragmentado entre varias pessoas.
-      </p>
-
-      <div class="bg-card rounded-xl border border-border p-8 space-y-6">
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-lg bg-destructive/10 flex items-center justify-center">
-            <svg class="w-5 h-5 text-destructive" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-          </div>
-          <h3 class="font-bold text-lg">Processo Antigo: ~2 horas por asset</h3>
-        </div>
-
-        <div class="grid gap-3">
-          <div class="flex items-center gap-4 p-3 bg-muted/50 rounded-lg">
-            <div class="w-7 h-7 rounded-full bg-muted flex items-center justify-center text-xs font-bold text-muted-foreground">1</div>
-            <span>Erica ou Lory demandava o conteudo</span>
-          </div>
-          <div class="flex items-center gap-4 p-3 bg-muted/50 rounded-lg">
-            <div class="w-7 h-7 rounded-full bg-muted flex items-center justify-center text-xs font-bold text-muted-foreground">2</div>
-            <span>Alguem formatava o texto usando um agente separado</span>
-          </div>
-          <div class="flex items-center gap-4 p-3 bg-muted/50 rounded-lg">
-            <div class="w-7 h-7 rounded-full bg-muted flex items-center justify-center text-xs font-bold text-muted-foreground">3</div>
-            <span>JP criava o padrao do layout no Figma</span>
-          </div>
-          <div class="flex items-center gap-4 p-3 bg-muted/50 rounded-lg">
-            <div class="w-7 h-7 rounded-full bg-muted flex items-center justify-center text-xs font-bold text-muted-foreground">4</div>
-            <span>Dudes gerava imagens com IA (ida e volta de prompts)</span>
-          </div>
-          <div class="flex items-center gap-4 p-3 bg-muted/50 rounded-lg">
-            <div class="w-7 h-7 rounded-full bg-muted flex items-center justify-center text-xs font-bold text-muted-foreground">5</div>
-            <span>JP ou Dudes montavam o asset final</span>
-          </div>
-          <div class="flex items-center gap-4 p-3 bg-muted/50 rounded-lg">
-            <div class="w-7 h-7 rounded-full bg-muted flex items-center justify-center text-xs font-bold text-muted-foreground">6</div>
-            <span>JP revisava, ajustava e exportava</span>
-          </div>
-          <div class="flex items-center gap-4 p-3 bg-muted/50 rounded-lg">
-            <div class="w-7 h-7 rounded-full bg-muted flex items-center justify-center text-xs font-bold text-muted-foreground">7</div>
-            <span>Tais legendava e postava</span>
-          </div>
-        </div>
-
-        <div class="flex flex-wrap gap-4 pt-4 border-t border-border text-sm">
-          <span class="text-muted-foreground"><strong class="text-foreground">3-4 pessoas</strong> envolvidas</span>
-          <span class="text-muted-foreground"><strong class="text-foreground">~2 horas</strong> por asset</span>
-          <span class="text-muted-foreground">Processo <strong class="text-foreground">fragmentado</strong></span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="section-divider mx-auto max-w-4xl"></div>
-
-  <!-- A SOLUCAO -->
-  <section class="py-24 px-6" id="solucao">
-    <div class="max-w-4xl mx-auto space-y-8">
-      <div class="space-y-4">
-        <span class="text-xs font-semibold uppercase tracking-wider text-success">A Solucao</span>
-        <h2 class="text-3xl md:text-4xl font-bold tracking-tight">O novo processo com BrandOS</h2>
-      </div>
-
-      <p class="text-lg text-muted-foreground font-serif leading-relaxed">
-        Um sistema que <strong class="text-foreground">conhece sua marca</strong>, <strong class="text-foreground">entende sua estrategia</strong> e <strong class="text-foreground">cria assets profissionais automaticamente</strong>.
-      </p>
-
-      <div class="bg-card rounded-xl border border-accent/30 glow-accent p-8 space-y-6">
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-lg bg-success/10 flex items-center justify-center">
-            <svg class="w-5 h-5 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-          </div>
-          <h3 class="font-bold text-lg">Novo Processo: 2-3 minutos</h3>
-        </div>
-
-        <div class="grid gap-3">
-          <div class="flex items-center gap-4 p-3 bg-accent/5 rounded-lg border border-accent/10">
-            <div class="w-7 h-7 rounded-full bg-accent/20 flex items-center justify-center text-xs font-bold text-accent">1</div>
-            <span>Voce escolhe o que quer criar e insere o conteudo</span>
-          </div>
-          <div class="flex items-center gap-4 p-3 bg-accent/5 rounded-lg border border-accent/10">
-            <div class="w-7 h-7 rounded-full bg-accent/20 flex items-center justify-center text-xs font-bold text-accent">2</div>
-            <span>O sistema cria, formata e monta automaticamente</span>
-          </div>
-          <div class="flex items-center gap-4 p-3 bg-accent/5 rounded-lg border border-accent/10">
-            <div class="w-7 h-7 rounded-full bg-accent/20 flex items-center justify-center text-xs font-bold text-accent">3</div>
-            <span>Voce revisa, ajusta se quiser, e exporta</span>
-          </div>
-        </div>
-
-        <div class="flex flex-wrap gap-4 pt-4 border-t border-accent/20 text-sm">
-          <span class="text-muted-foreground"><strong class="text-accent">1 pessoa</strong></span>
-          <span class="text-muted-foreground"><strong class="text-accent">2-3 minutos</strong></span>
-          <span class="text-muted-foreground"><strong class="text-accent">100% automatizado</strong></span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="section-divider mx-auto max-w-4xl"></div>
-
-  <!-- FLUXO REAL -->
-  <section class="py-24 px-6" id="fluxo">
-    <div class="max-w-4xl mx-auto space-y-8">
-      <div class="space-y-4">
-        <span class="text-xs font-semibold uppercase tracking-wider text-accent">Fluxo Real</span>
-        <h2 class="text-3xl md:text-4xl font-bold tracking-tight">O que acontece quando voce usa</h2>
-      </div>
-
-      <!-- PASSO 1 -->
-      <div class="bg-card rounded-xl border border-border p-6 space-y-4">
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-lg bg-accent flex items-center justify-center text-white font-bold">1</div>
-          <h3 class="font-bold text-lg">Escolha o tipo de asset</h3>
-        </div>
-        <p class="text-muted-foreground font-serif">Voce seleciona o que quer criar:</p>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-          <div class="p-4 bg-muted rounded-lg text-center">
-            <div class="text-2xl mb-2">📱</div>
-            <div class="font-semibold">Carrossel</div>
-            <div class="text-xs text-muted-foreground">Multi-slide para redes</div>
-          </div>
-          <div class="p-4 bg-muted rounded-lg text-center">
-            <div class="text-2xl mb-2">📢</div>
-            <div class="font-semibold">Ads</div>
-            <div class="text-xs text-muted-foreground">Campanhas pagas</div>
-          </div>
-          <div class="p-4 bg-muted rounded-lg text-center">
-            <div class="text-2xl mb-2">🖼️</div>
-            <div class="font-semibold">Posts</div>
-            <div class="text-xs text-muted-foreground">Imagens unicas</div>
-          </div>
-          <div class="p-4 bg-muted rounded-lg text-center">
-            <div class="text-2xl mb-2">📊</div>
-            <div class="font-semibold">Slides</div>
-            <div class="text-xs text-muted-foreground">Aulas e apresentacoes</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- PASSO 2 -->
-      <div class="bg-card rounded-xl border border-border p-6 space-y-4">
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-lg bg-accent flex items-center justify-center text-white font-bold">2</div>
-          <h3 class="font-bold text-lg">Contextualize o produto</h3>
-        </div>
-        <p class="text-muted-foreground font-serif">O sistema ja conhece os produtos da Academia. Voce escolhe:</p>
-        <div class="grid md:grid-cols-2 gap-4">
-          <div>
-            <div class="text-xs font-semibold uppercase text-muted-foreground mb-2">Produtos pre-cadastrados</div>
-            <div class="space-y-2 text-sm">
-              <div class="p-2 bg-muted rounded">Comunidade Lendaria (R$ 1.488)</div>
-              <div class="p-2 bg-muted rounded">Formacao Lendaria (R$ 12.888)</div>
-              <div class="p-2 bg-muted rounded">Gestor IA (R$ 6.888)</div>
-              <div class="p-2 bg-muted rounded">Dominando Obsidian (R$ 288)</div>
-            </div>
-          </div>
-          <div>
-            <div class="text-xs font-semibold uppercase text-muted-foreground mb-2">Publicos-alvo (ICPs)</div>
-            <div class="space-y-2 text-sm">
-              <div class="p-2 bg-muted rounded">Empreendedor Travado (~30%)</div>
-              <div class="p-2 bg-muted rounded">Executivo Exausto (~25%)</div>
-              <div class="p-2 bg-muted rounded">Tecnico Visionario (~20%)</div>
-              <div class="p-2 bg-muted rounded">Veterano Desprezado (~15%)</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- PASSO 3 -->
-      <div class="bg-card rounded-xl border border-border p-6 space-y-4">
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-lg bg-accent flex items-center justify-center text-white font-bold">3</div>
-          <h3 class="font-bold text-lg">Defina o objetivo e angulo</h3>
-        </div>
-        <div class="grid md:grid-cols-2 gap-4">
-          <div>
-            <div class="text-xs font-semibold uppercase text-muted-foreground mb-2">Objetivo da campanha</div>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-3 py-1 bg-muted rounded-full text-sm">Awareness</span>
-              <span class="px-3 py-1 bg-muted rounded-full text-sm">Consideracao</span>
-              <span class="px-3 py-1 bg-muted rounded-full text-sm">Conversao</span>
-              <span class="px-3 py-1 bg-muted rounded-full text-sm">Retencao</span>
-            </div>
-          </div>
-          <div>
-            <div class="text-xs font-semibold uppercase text-muted-foreground mb-2">Angulo narrativo</div>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-3 py-1 bg-muted rounded-full text-sm">Beneficios</span>
-              <span class="px-3 py-1 bg-muted rounded-full text-sm">Problema-Solucao</span>
-              <span class="px-3 py-1 bg-muted rounded-full text-sm">Prova Social</span>
-              <span class="px-3 py-1 bg-muted rounded-full text-sm">Urgencia</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- PASSO 4 -->
-      <div class="bg-card rounded-xl border border-border p-6 space-y-4">
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-lg bg-accent flex items-center justify-center text-white font-bold">4</div>
-          <h3 class="font-bold text-lg">Insira o conteudo</h3>
-        </div>
-        <p class="text-muted-foreground font-serif">Cole o texto, link ou ideia que quer transformar em asset. O sistema entende e estrutura automaticamente.</p>
-      </div>
-
-      <!-- PASSO 5 -->
-      <div class="bg-card rounded-xl border border-border p-6 space-y-4">
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-lg bg-accent flex items-center justify-center text-white font-bold">5</div>
-          <h3 class="font-bold text-lg">A IA trabalha (6 agentes em sequencia)</h3>
-        </div>
-        <p class="text-muted-foreground font-serif mb-4">Voce ve o progresso em tempo real. Cada agente tem uma funcao:</p>
-        <div class="grid md:grid-cols-2 gap-3">
-          <div class="flex items-center gap-3 p-3 bg-muted rounded-lg">
-            <div class="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center text-xs font-bold text-accent">1</div>
-            <div>
-              <div class="font-semibold text-sm">Brand Strategist</div>
-              <div class="text-xs text-muted-foreground">Escolhe o template e define estrategia</div>
-            </div>
-          </div>
-          <div class="flex items-center gap-3 p-3 bg-muted rounded-lg">
-            <div class="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center text-xs font-bold text-accent">2</div>
-            <div>
-              <div class="font-semibold text-sm">Story Architect</div>
-              <div class="text-xs text-muted-foreground">Estrutura a narrativa slide por slide</div>
-            </div>
-          </div>
-          <div class="flex items-center gap-3 p-3 bg-muted rounded-lg">
-            <div class="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center text-xs font-bold text-accent">3</div>
-            <div>
-              <div class="font-semibold text-sm">Copywriter</div>
-              <div class="text-xs text-muted-foreground">Escreve o texto com tom da marca</div>
-            </div>
-          </div>
-          <div class="flex items-center gap-3 p-3 bg-muted rounded-lg">
-            <div class="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center text-xs font-bold text-accent">4</div>
-            <div>
-              <div class="font-semibold text-sm">Visual Compositor</div>
-              <div class="text-xs text-muted-foreground">Define layout e posicionamento</div>
-            </div>
-          </div>
-          <div class="flex items-center gap-3 p-3 bg-muted rounded-lg">
-            <div class="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center text-xs font-bold text-accent">5</div>
-            <div>
-              <div class="font-semibold text-sm">Quality Validator</div>
-              <div class="text-xs text-muted-foreground">Valida se esta dentro do brand</div>
-            </div>
-          </div>
-          <div class="flex items-center gap-3 p-3 bg-muted rounded-lg">
-            <div class="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center text-xs font-bold text-accent">6</div>
-            <div>
-              <div class="font-semibold text-sm">Render Engine</div>
-              <div class="text-xs text-muted-foreground">Gera o visual final</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- PASSO 6 -->
-      <div class="bg-card rounded-xl border border-border p-6 space-y-4">
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-lg bg-accent flex items-center justify-center text-white font-bold">6</div>
-          <h3 class="font-bold text-lg">Preview e Export</h3>
-        </div>
-        <p class="text-muted-foreground font-serif">Voce ve o resultado final, navega pelos slides, e exporta. Pronto pra postar.</p>
-      </div>
-    </div>
-  </section>
-
-  <div class="section-divider mx-auto max-w-4xl"></div>
-
-  <!-- TEMPLATES -->
-  <section class="py-24 px-6" id="templates">
-    <div class="max-w-4xl mx-auto space-y-8">
-      <div class="space-y-4">
-        <span class="text-xs font-semibold uppercase tracking-wider text-primary">Templates Inteligentes</span>
-        <h2 class="text-3xl md:text-4xl font-bold tracking-tight">A IA escolhe o melhor para seu objetivo</h2>
-      </div>
-
-      <p class="text-lg text-muted-foreground font-serif leading-relaxed">
-        Baseado no seu objetivo e angulo, o sistema seleciona automaticamente o template ideal:
-      </p>
-
-      <div class="grid md:grid-cols-2 gap-4">
-        <div class="bg-card rounded-xl border border-border p-6 space-y-3">
-          <div class="flex items-center justify-between">
-            <h3 class="font-bold">Product Launch</h3>
-            <span class="text-xs px-2 py-1 bg-accent/10 text-accent rounded">8 slides</span>
-          </div>
-          <p class="text-sm text-muted-foreground font-serif">Para lancamentos, cursos e ofertas. Estrutura PAS (Problem-Agitation-Solution) focada em conversao.</p>
-          <div class="text-xs text-muted-foreground">Melhor para: Black Friday, lancamentos, cursos</div>
-        </div>
-
-        <div class="bg-card rounded-xl border border-border p-6 space-y-3">
-          <div class="flex items-center justify-between">
-            <h3 class="font-bold">Educational</h3>
-            <span class="text-xs px-2 py-1 bg-accent/10 text-accent rounded">7 slides</span>
-          </div>
-          <p class="text-sm text-muted-foreground font-serif">Para conteudo educacional e tutoriais. Ensina algo valioso antes de vender.</p>
-          <div class="text-xs text-muted-foreground">Melhor para: dicas, how-to, tutoriais</div>
-        </div>
-
-        <div class="bg-card rounded-xl border border-border p-6 space-y-3">
-          <div class="flex items-center justify-between">
-            <h3 class="font-bold">Social Proof</h3>
-            <span class="text-xs px-2 py-1 bg-accent/10 text-accent rounded">6 slides</span>
-          </div>
-          <p class="text-sm text-muted-foreground font-serif">Para mostrar resultados de clientes. Deixa os clientes falarem por voce.</p>
-          <div class="text-xs text-muted-foreground">Melhor para: depoimentos, cases, resultados</div>
-        </div>
-
-        <div class="bg-card rounded-xl border border-border p-6 space-y-3">
-          <div class="flex items-center justify-between">
-            <h3 class="font-bold">Announcement</h3>
-            <span class="text-xs px-2 py-1 bg-accent/10 text-accent rounded">5 slides</span>
-          </div>
-          <p class="text-sm text-muted-foreground font-serif">Para anuncios e novidades. Direto ao ponto.</p>
-          <div class="text-xs text-muted-foreground">Melhor para: features, updates, news</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="section-divider mx-auto max-w-4xl"></div>
-
-  <!-- COMPARATIVO -->
-  <section class="py-24 px-6" id="valor">
-    <div class="max-w-4xl mx-auto space-y-8">
-      <div class="space-y-4">
-        <span class="text-xs font-semibold uppercase tracking-wider text-primary">O Valor</span>
-        <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Os numeros que importam</h2>
-      </div>
-
-      <div class="overflow-x-auto">
-        <table class="w-full">
-          <thead>
-            <tr class="border-b border-border">
-              <th class="text-left py-4 px-2 font-semibold">Metrica</th>
-              <th class="text-center py-4 px-2 font-semibold text-destructive/80">Antes</th>
-              <th class="text-center py-4 px-2 font-semibold text-accent">Com BrandOS</th>
-            </tr>
-          </thead>
-          <tbody class="font-serif">
-            <tr class="border-b border-border/50">
-              <td class="py-4 px-2 text-muted-foreground">Tempo por asset</td>
-              <td class="py-4 px-2 text-center">~2 horas</td>
-              <td class="py-4 px-2 text-center text-accent font-bold">2-3 minutos</td>
-            </tr>
-            <tr class="border-b border-border/50">
-              <td class="py-4 px-2 text-muted-foreground">Pessoas envolvidas</td>
-              <td class="py-4 px-2 text-center">3-4</td>
-              <td class="py-4 px-2 text-center text-accent font-bold">1</td>
-            </tr>
-            <tr class="border-b border-border/50">
-              <td class="py-4 px-2 text-muted-foreground">Assets por semana</td>
-              <td class="py-4 px-2 text-center">15-20</td>
-              <td class="py-4 px-2 text-center text-accent font-bold">45-60</td>
-            </tr>
-            <tr class="border-b border-border/50">
-              <td class="py-4 px-2 text-muted-foreground">Dependencia de designer</td>
-              <td class="py-4 px-2 text-center">Total</td>
-              <td class="py-4 px-2 text-center text-accent font-bold">Zero</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="bg-card rounded-xl border border-primary/20 glow-gold p-8 text-center space-y-4">
-        <div class="text-6xl md:text-8xl font-bold gradient-gold">40x</div>
-        <div class="text-xl text-muted-foreground font-serif">mais rapido</div>
-      </div>
-    </div>
-  </section>
-
-  <div class="section-divider mx-auto max-w-4xl"></div>
-
-  <!-- CTA FINAL -->
-  <section class="py-24 px-6">
-    <div class="max-w-4xl mx-auto text-center space-y-8">
-      <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Pronto para comecar?</h2>
-      <p class="text-lg text-muted-foreground font-serif">Acesse o BrandOS e crie seu primeiro asset em minutos.</p>
-      <a href="https://branding-os-nu.vercel.app/" target="_blank" class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-accent hover:bg-accent/90 text-white font-semibold transition-colors">
-        Acessar BrandOS
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-      </a>
-    </div>
-  </section>
-
   <!-- FOOTER -->
-  <footer class="py-16 px-6 border-t border-border">
-    <div class="max-w-4xl mx-auto text-center space-y-4">
-      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" viewBox="0 0 320 320" class="text-primary/30 mx-auto">
-        <path fill="currentColor" d="M247.258 18.749A63.908 63.908 0 0 0 202.029 0h-84.091a63.906 63.906 0 0 0-45.229 18.749L18.748 72.596C6.749 84.596 0 100.961 0 117.944v84.095c0 16.866 6.75 33.232 18.748 45.231l53.978 53.981A63.907 63.907 0 0 0 117.954 320h84.092a63.908 63.908 0 0 0 45.228-18.749l53.978-53.981A63.91 63.91 0 0 0 320 202.039v-84.095a63.913 63.913 0 0 0-18.748-45.231l-53.978-53.98-.016.016Zm3.749 45.964c2 0 3.117.25 3.866.367.867 3.366 1 16-10.865 39.865-5.5 11.116-12.749 22.732-21.248 34.481a410.027 410.027 0 0 0-20.364-21.865c-7.25-7.25-14.499-14-21.865-20.366 7.616-5.5 15.249-10.5 22.731-14.866 27.231-15.866 42.479-17.499 47.729-17.499v-.117h.016Zm-44.362 95.212c-6.999 8.25-14.498 16.366-22.364 24.365-7.999 8-16.115 15.5-24.364 22.366-8.249-7-16.365-14.366-24.364-22.366-8-7.999-15.499-16.115-22.365-24.365 6.999-8.25 14.499-16.366 22.365-24.365 7.865-8 16.115-15.5 24.364-22.366 8.249 7 16.365 14.366 24.364 22.366 7.999 7.999 15.498 16.115 22.364 24.365ZM90.707 36.865c7.25-7.25 16.865-11.25 27.114-11.25h84.091c10.249 0 19.865 4 27.114 11.25l4.616 4.616c-20.997 5.117-46.978 18.866-73.842 39.115-26.864-20.25-52.844-33.865-73.842-39.115l4.616-4.616h.133ZM65.093 65.097c.617-.117 1.867-.367 3.867-.367 15.865 0 38.612 12.25 47.728 17.5 7.499 4.365 15.115 9.365 22.731 14.865-7.366 6.366-14.615 13.116-21.865 20.366a410.071 410.071 0 0 0-20.364 21.865c-8.5-11.749-15.748-23.365-21.248-34.481C64.077 80.979 64.193 68.363 65.077 64.98v.117h.016Zm-28.23 164.058c-7.25-7.25-11.249-16.866-11.249-27.116v-84.095c0-10.25 4-19.866 11.249-27.115l4.616-4.617c5.116 20.999 18.865 46.981 38.98 73.846-20.249 26.866-33.864 52.848-38.98 73.847l-4.616-4.617v-.133Zm31.98 25.982c-2 0-3.117-.25-3.866-.367-.867-3.366-1-15.999 10.865-39.865 5.5-11.116 12.749-22.732 21.248-34.481a410.071 410.071 0 0 0 20.364 21.865c7.25 7.25 14.499 14 21.865 20.366-7.616 5.5-15.249 10.5-22.731 14.866-27.23 15.866-42.48 17.499-47.728 17.499v.117h-.017Zm160.3 27.865c-7.249 7.25-16.865 11.249-27.114 11.249h-84.091c-10.249 0-19.865-3.999-27.114-11.249l-4.616-4.617c20.997-5.116 46.978-18.865 73.842-39.114 26.864 20.249 52.845 33.865 73.842 39.114l-4.616 4.617h-.133Zm25.614-28.232c-.617.117-1.867.367-3.866.367-15.865 0-38.613-12.25-47.729-17.499-7.499-4.367-15.115-9.367-22.731-14.866a410.464 410.464 0 0 0 21.865-20.366 410.027 410.027 0 0 0 20.364-21.865c8.499 11.749 15.748 23.365 21.248 34.481 11.865 23.866 11.749 36.482 10.865 39.865v-.117h-.016Zm39.479-52.864c0 10.25-4 19.866-11.249 27.115l-4.616 4.617c-5.116-20.999-18.865-46.981-38.979-73.846 20.248-26.866 33.863-52.848 38.979-73.847l4.616 4.617c7.249 7.25 11.249 16.866 11.249 27.115v84.229Z"/>
-      </svg>
-      <p class="text-muted-foreground">BrandOS v0.9.0 | Academia Lendaria | Dezembro 2025</p>
+  <footer class="py-12 px-6 border-t border-border">
+    <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 320 320" class="text-primary/50">
+          <path fill="currentColor" d="M247.258 18.749A63.908 63.908 0 0 0 202.029 0h-84.091a63.906 63.906 0 0 0-45.229 18.749L18.748 72.596C6.749 84.596 0 100.961 0 117.944v84.095c0 16.866 6.75 33.232 18.748 45.231l53.978 53.981A63.907 63.907 0 0 0 117.954 320h84.092a63.908 63.908 0 0 0 45.228-18.749l53.978-53.981A63.91 63.91 0 0 0 320 202.039v-84.095a63.913 63.913 0 0 0-18.748-45.231l-53.978-53.98-.016.016Zm3.749 45.964c2 0 3.117.25 3.866.367.867 3.366 1 16-10.865 39.865-5.5 11.116-12.749 22.732-21.248 34.481a410.027 410.027 0 0 0-20.364-21.865c-7.25-7.25-14.499-14-21.865-20.366 7.616-5.5 15.249-10.5 22.731-14.866 27.231-15.866 42.479-17.499 47.729-17.499v-.117h.016Zm-44.362 95.212c-6.999 8.25-14.498 16.366-22.364 24.365-7.999 8-16.115 15.5-24.364 22.366-8.249-7-16.365-14.366-24.364-22.366-8-7.999-15.499-16.115-22.365-24.365 6.999-8.25 14.499-16.366 22.365-24.365 7.865-8 16.115-15.5 24.364-22.366 8.249 7 16.365 14.366 24.364 22.366 7.999 7.999 15.498 16.115 22.364 24.365ZM90.707 36.865c7.25-7.25 16.865-11.25 27.114-11.25h84.091c10.249 0 19.865 4 27.114 11.25l4.616 4.616c-20.997 5.117-46.978 18.866-73.842 39.115-26.864-20.25-52.844-33.865-73.842-39.115l4.616-4.616h.133ZM65.093 65.097c.617-.117 1.867-.367 3.867-.367 15.865 0 38.612 12.25 47.728 17.5 7.499 4.365 15.115 9.365 22.731 14.865-7.366 6.366-14.615 13.116-21.865 20.366a410.071 410.071 0 0 0-20.364 21.865c-8.5-11.749-15.748-23.365-21.248-34.481C64.077 80.979 64.193 68.363 65.077 64.98v.117h.016Zm-28.23 164.058c-7.25-7.25-11.249-16.866-11.249-27.116v-84.095c0-10.25 4-19.866 11.249-27.115l4.616-4.617c5.116 20.999 18.865 46.981 38.98 73.846-20.249 26.866-33.864 52.848-38.98 73.847l-4.616-4.617v-.133Zm31.98 25.982c-2 0-3.117-.25-3.866-.367-.867-3.366-1-15.999 10.865-39.865 5.5-11.116 12.749-22.732 21.248-34.481a410.071 410.071 0 0 0 20.364 21.865c7.25 7.25 14.499 14 21.865 20.366-7.616 5.5-15.249 10.5-22.731 14.866-27.23 15.866-42.48 17.499-47.728 17.499v.117h-.017Zm160.3 27.865c-7.249 7.25-16.865 11.249-27.114 11.249h-84.091c-10.249 0-19.865-3.999-27.114-11.249l-4.616-4.617c20.997-5.116 46.978-18.865 73.842-39.114 26.864 20.249 52.845 33.865 73.842 39.114l-4.616 4.617h-.133Zm25.614-28.232c-.617.117-1.867.367-3.866.367-15.865 0-38.613-12.25-47.729-17.499-7.499-4.367-15.115-9.367-22.731-14.866a410.464 410.464 0 0 0 21.865-20.366 410.027 410.027 0 0 0 20.364-21.865c8.499 11.749 15.748 23.365 21.248 34.481 11.865 23.866 11.749 36.482 10.865 39.865v-.117h-.016Zm39.479-52.864c0 10.25-4 19.866-11.249 27.115l-4.616 4.617c-5.116-20.999-18.865-46.981-38.979-73.846 20.248-26.866 33.863-52.848 38.979-73.847l4.616 4.617c7.249 7.25 11.249 16.866 11.249 27.115v84.229Z"/>
+        </svg>
+        <span class="text-sm text-muted-foreground">BrandOS v0.9.0 | Academia Lendaria</span>
+      </div>
+      <span class="text-xs text-muted-foreground">Dezembro 2025</span>
     </div>
   </footer>
 
