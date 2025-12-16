@@ -3,12 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BrandOS - Documentação Oficial | Academia Lendária</title>
+  <title>BrandOS - Documentacao Oficial | Academia Lendaria</title>
 
-  <!-- Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Fonts: Inter + Source Serif 4 -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 
   <script>
@@ -21,30 +18,16 @@
             serif: ['Source Serif 4', 'Georgia', 'serif'],
           },
           colors: {
-            primary: {
-              DEFAULT: '#C9B298',
-              50: '#F2EBE4',
-              100: '#E8DED2',
-              200: '#D9CBB8',
-              300: '#C9B298',
-              400: '#B89F7E',
-              500: '#A78C64',
-              600: '#8A7352',
-              700: '#6D5A40',
-              800: '#50412E',
-              900: '#383025',
-            },
+            primary: { DEFAULT: '#C9B298', 50: '#F2EBE4', 100: '#E8DED2', 200: '#D9CBB8', 300: '#C9B298', 400: '#B89F7E', 500: '#A78C64', 600: '#8A7352', 700: '#6D5A40', 800: '#50412E', 900: '#383025' },
             background: '#0A0A0A',
             foreground: '#FAFAFA',
             card: '#121212',
-            'card-foreground': '#FAFAFA',
             muted: '#171717',
             'muted-foreground': '#A3A3A3',
             border: '#262626',
+            accent: '#5856D6',
             success: '#34C759',
             destructive: '#FF3B30',
-            warning: '#FF9500',
-            info: '#007AFF',
           }
         }
       }
@@ -52,107 +35,47 @@
   </script>
 
   <style>
-    :root {
-      --primary: #C9B298;
-      --background: #0A0A0A;
-      --foreground: #FAFAFA;
-    }
-
-    body {
-      font-family: 'Inter', system-ui, sans-serif;
-      background-color: var(--background);
-      color: var(--foreground);
-    }
-
-    .font-serif {
-      font-family: 'Source Serif 4', Georgia, serif;
-    }
-
-    /* Animações */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .animate-fade-in {
-      animation: fadeIn 0.6s ease-out forwards;
-    }
-
-    .stagger-1 { animation-delay: 100ms; }
-    .stagger-2 { animation-delay: 200ms; }
-    .stagger-3 { animation-delay: 300ms; }
-    .stagger-4 { animation-delay: 400ms; }
-    .stagger-5 { animation-delay: 500ms; }
-
-    /* Gradient text */
-    .gradient-gold {
-      background: linear-gradient(135deg, #C9B298, #E8DED2);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    /* Glow effect */
-    .glow-gold {
-      box-shadow: 0 0 40px rgba(201, 178, 152, 0.15);
-    }
-
-    /* Section divider */
-    .section-divider {
-      height: 1px;
-      background: linear-gradient(90deg, transparent, #262626 20%, #262626 80%, transparent);
-    }
-
-    /* Scroll progress indicator */
-    .scroll-progress {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 2px;
-      background: var(--primary);
-      z-index: 9999;
-      transition: width 0.1s;
-    }
+    body { font-family: 'Inter', system-ui, sans-serif; background-color: #0A0A0A; color: #FAFAFA; }
+    .font-serif { font-family: 'Source Serif 4', Georgia, serif; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .animate-fade-in { animation: fadeIn 0.6s ease-out forwards; }
+    .stagger-1 { animation-delay: 100ms; } .stagger-2 { animation-delay: 200ms; } .stagger-3 { animation-delay: 300ms; } .stagger-4 { animation-delay: 400ms; }
+    .gradient-gold { background: linear-gradient(135deg, #C9B298, #E8DED2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .glow-gold { box-shadow: 0 0 40px rgba(201, 178, 152, 0.15); }
+    .glow-accent { box-shadow: 0 0 40px rgba(88, 86, 214, 0.2); }
+    .section-divider { height: 1px; background: linear-gradient(90deg, transparent, #262626 20%, #262626 80%, transparent); }
+    .scroll-progress { position: fixed; top: 0; left: 0; height: 2px; background: #C9B298; z-index: 9999; }
   </style>
 </head>
-<body class="bg-background text-foreground antialiased">
-  <!-- Scroll Progress -->
+<body class="antialiased">
   <div class="scroll-progress" id="scrollProgress"></div>
 
-  <!-- HERO SECTION -->
+  <!-- HERO -->
   <section class="min-h-screen flex flex-col justify-center items-center px-6 py-24 relative overflow-hidden">
-    <!-- Background gradient -->
     <div class="absolute inset-0 bg-gradient-to-b from-background via-background to-card"></div>
-
-    <!-- Subtle glow -->
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 blur-[150px] rounded-full"></div>
 
     <div class="relative z-10 max-w-4xl mx-auto text-center space-y-8">
-      <!-- Logo -->
       <div class="opacity-0 animate-fade-in flex justify-center mb-8">
         <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="none" viewBox="0 0 320 320" class="text-primary">
-          <path fill="currentColor" d="M247.258 18.749A63.908 63.908 0 0 0 202.029 0h-84.091a63.906 63.906 0 0 0-45.229 18.749L18.748 72.596C6.749 84.596 0 100.961 0 117.944v84.095c0 16.866 6.75 33.232 18.748 45.231l53.978 53.981A63.907 63.907 0 0 0 117.954 320h84.092a63.908 63.908 0 0 0 45.228-18.749l53.978-53.981A63.91 63.91 0 0 0 320 202.039v-84.095a63.913 63.913 0 0 0-18.748-45.231l-53.978-53.98-.016.016Zm3.749 45.964c2 0 3.117.25 3.866.367.867 3.366 1 16-10.865 39.865-5.5 11.116-12.749 22.732-21.248 34.481a410.027 410.027 0 0 0-20.364-21.865c-7.25-7.25-14.499-14-21.865-20.366 7.616-5.5 15.249-10.5 22.731-14.866 27.231-15.866 42.479-17.499 47.729-17.499v-.117h.016Zm-44.362 95.212c-6.999 8.25-14.498 16.366-22.364 24.365-7.999 8-16.115 15.5-24.364 22.366-8.249-7-16.365-14.366-24.364-22.366-8-7.999-15.499-16.115-22.365-24.365 6.999-8.25 14.499-16.366 22.365-24.365 7.865-8 16.115-15.5 24.364-22.366 8.249 7 16.365 14.366 24.364 22.366 7.999 7.999 15.498 16.115 22.364 24.365ZM90.707 36.865c7.25-7.25 16.865-11.25 27.114-11.25h84.091c10.249 0 19.865 4 27.114 11.25l4.616 4.616c-20.997 5.117-46.978 18.866-73.842 39.115-26.864-20.25-52.844-33.865-73.842-39.115l4.616-4.616h.133ZM65.093 65.097c.617-.117 1.867-.367 3.867-.367 15.865 0 38.612 12.25 47.728 17.5 7.499 4.365 15.115 9.365 22.731 14.865-7.366 6.366-14.615 13.116-21.865 20.366a410.071 410.071 0 0 0-20.364 21.865c-8.5-11.749-15.748-23.365-21.248-34.481C64.077 80.979 64.193 68.363 65.077 64.98v.117h.016Zm-28.23 164.058c-7.25-7.25-11.249-16.866-11.249-27.116v-84.095c0-10.25 4-19.866 11.249-27.115l4.616-4.617c5.116 20.999 18.865 46.981 38.98 73.846-20.249 26.866-33.864 52.848-38.98 73.847l-4.616-4.617v-.133Zm31.98 25.982c-2 0-3.117-.25-3.866-.367-.867-3.366-1-15.999 10.865-39.865 5.5-11.116 12.749-22.732 21.248-34.481a410.071 410.071 0 0 0 20.364 21.865c7.25 7.25 14.499 14 21.865 20.366-7.616 5.5-15.249 10.5-22.731 14.866-27.23 15.866-42.48 17.499-47.728 17.499v.117h-.017Zm160.3 27.865c-7.249 7.25-16.865 11.249-27.114 11.249h-84.091c-10.249 0-19.865-3.999-27.114-11.249l-4.616-4.617c20.997-5.116 46.978-18.865 73.842-39.114 26.864 20.249 52.845 33.865 73.842 39.114l-4.616 4.617h-.133Zm25.614-28.232c-.617.117-1.867.367-3.866.367-15.865 0-38.613-12.25-47.729-17.499-7.499-4.367-15.115-9.367-22.731-14.866a410.464 410.464 0 0 0 21.865-20.366 410.027 410.027 0 0 0 20.364-21.865c8.499 11.749 15.748 23.365 21.248 34.481 11.865 23.866 11.749 36.482 10.865 39.865v-.117h-.016Zm39.479-52.864c0 10.25-4 19.866-11.249 27.115l-4.616 4.617c-5.116-20.999-18.865-46.981-38.979-73.846 20.248-26.866 33.863-52.848 38.979-73.847l4.616 4.617c7.249 7.25 11.249 16.866 11.249 27.115v84.229Z"/>
+          <path fill="currentColor" d="M247.258 18.749A63.908 63.908 0 0 0 202.029 0h-84.091a63.906 63.906 0 0 0-45.229 18.749L18.748 72.596C6.749 84.596 0 100.961 0 117.944v84.095c0 16.866 6.75 33.232 18.748 45.231l53.978 53.981A63.907 63.907 0 0 0 117.954 320h84.092a63.908 63.908 0 0 0 45.228-18.749l53.978-53.981A63.91 63.91 0 0 0 320 202.039v-84.095a63.913 63.913 0 0 0-18.748-45.231l-53.978-53.98-.016.016Zm3.749 45.964c2 0 3.117.25 3.866.367.867 3.366 1 16-10.865 39.865-5.5 11.116-12.749 22.732-21.248 34.481a410.027 410.027 0 0 0-20.364-21.865c-7.25-7.25-14.499-14-21.865-20.366 7.616-5.5 15.249-10.5 22.731-14.866 27.231-15.866 42.479-17.499 47.729-17.499v-.117h.016Zm-44.362 95.212c-6.999 8.25-14.498 16.366-22.364 24.365-7.999 8-16.115 15.5-24.364 22.366-8.249-7-16.365-14.366-24.364-22.366-8-7.999-15.499-16.115-22.365-24.365 6.999-8.25 14.499-16.366 22.365-24.365 7.865-8 16.115-15.5 24.364-22.366 8.249 7 16.365 14.366 24.364 22.366 7.999 7.999 15.498 16.115 22.364 24.365Z"/>
         </svg>
       </div>
 
-      <!-- Badge -->
       <div class="opacity-0 animate-fade-in stagger-1">
         <span class="inline-flex items-center px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider border border-primary/30 bg-primary/10 text-primary">
           Documentacao Oficial
         </span>
       </div>
 
-      <!-- Hero Title -->
       <h1 class="opacity-0 animate-fade-in stagger-2 text-5xl md:text-7xl font-bold tracking-tight">
         <span class="gradient-gold">BrandOS</span>
       </h1>
 
-      <!-- Subtitle -->
       <p class="opacity-0 animate-fade-in stagger-3 text-xl md:text-2xl text-muted-foreground font-serif max-w-2xl mx-auto leading-relaxed">
-        Sistema Criativo e Inteligente de Assets para Marketing
+        O sistema que cria assets de marketing em minutos, nao horas.
       </p>
 
-      <!-- Key numbers -->
       <div class="opacity-0 animate-fade-in stagger-4 flex flex-wrap justify-center gap-8 md:gap-16 pt-8">
         <div class="text-center">
           <div class="text-4xl md:text-5xl font-bold text-primary">2-3</div>
@@ -167,736 +90,430 @@
         </div>
       </div>
 
-      <!-- Scroll indicator -->
-      <div class="opacity-0 animate-fade-in stagger-5 pt-16">
-        <div class="flex flex-col items-center text-muted-foreground">
-          <span class="text-xs uppercase tracking-wider mb-2">Role para explorar</span>
-          <svg class="w-6 h-6 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-          </svg>
-        </div>
+      <!-- CTA -->
+      <div class="opacity-0 animate-fade-in stagger-4 pt-8">
+        <a href="https://branding-os-nu.vercel.app/" target="_blank" class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-accent hover:bg-accent/90 text-white font-semibold transition-colors">
+          Acessar BrandOS
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- DIVIDER -->
   <div class="section-divider mx-auto max-w-4xl"></div>
 
-  <!-- O PROBLEMA (ANTES) -->
+  <!-- O PROBLEMA -->
   <section class="py-24 px-6" id="problema">
-    <div class="max-w-4xl mx-auto">
-      <div class="space-y-8">
-        <!-- Section header -->
-        <div class="space-y-4">
-          <span class="text-xs font-semibold uppercase tracking-wider text-destructive/80">O Problema</span>
-          <h2 class="text-3xl md:text-4xl font-bold tracking-tight">
-            O ciclo que ninguem aguentava mais
-          </h2>
+    <div class="max-w-4xl mx-auto space-y-8">
+      <div class="space-y-4">
+        <span class="text-xs font-semibold uppercase tracking-wider text-destructive/80">O Problema</span>
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight">O ciclo que ninguem aguentava mais</h2>
+      </div>
+
+      <p class="text-lg text-muted-foreground font-serif leading-relaxed">
+        Cada carousel, post ou anuncio passava por um fluxo fragmentado entre varias pessoas.
+      </p>
+
+      <div class="bg-card rounded-xl border border-border p-8 space-y-6">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-lg bg-destructive/10 flex items-center justify-center">
+            <svg class="w-5 h-5 text-destructive" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          </div>
+          <h3 class="font-bold text-lg">Processo Antigo: ~2 horas por asset</h3>
         </div>
 
-        <!-- Description -->
-        <p class="text-lg text-muted-foreground font-serif leading-relaxed">
-          O time de marketing da Academia Lendaria enfrentava um processo repetitivo,
-          ineficiente e despadronizado na criacao de Assets Visuais. Cada carousel,
-          cada post, cada anuncio passava por um fluxo fragmentado.
-        </p>
-
-        <!-- The old process -->
-        <div class="bg-card rounded-xl border border-border p-8 space-y-6">
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-lg bg-destructive/10 flex items-center justify-center">
-              <svg class="w-5 h-5 text-destructive" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-              </svg>
-            </div>
-            <h3 class="font-bold text-lg">Processo Antigo: ~2 horas por asset</h3>
+        <div class="grid gap-3">
+          <div class="flex items-center gap-4 p-3 bg-muted/50 rounded-lg">
+            <div class="w-7 h-7 rounded-full bg-muted flex items-center justify-center text-xs font-bold text-muted-foreground">1</div>
+            <span>Erica ou Lory demandava o conteudo</span>
           </div>
-
-          <div class="grid gap-4">
-            <!-- Step 1 -->
-            <div class="flex items-start gap-4 p-4 bg-muted/50 rounded-lg">
-              <div class="w-8 h-8 rounded-full bg-muted flex items-center justify-center text-sm font-bold text-muted-foreground shrink-0">1</div>
-              <div>
-                <div class="font-semibold">Erica ou Lory demandava o conteudo</div>
-                <div class="text-sm text-muted-foreground">Briefing informal, sem padrao</div>
-              </div>
-            </div>
-
-            <!-- Step 2 -->
-            <div class="flex items-start gap-4 p-4 bg-muted/50 rounded-lg">
-              <div class="w-8 h-8 rounded-full bg-muted flex items-center justify-center text-sm font-bold text-muted-foreground shrink-0">2</div>
-              <div>
-                <div class="font-semibold">Erica ou Diego formatava o texto</div>
-                <div class="text-sm text-muted-foreground">Usando um agente separado</div>
-              </div>
-            </div>
-
-            <!-- Step 3 -->
-            <div class="flex items-start gap-4 p-4 bg-muted/50 rounded-lg">
-              <div class="w-8 h-8 rounded-full bg-muted flex items-center justify-center text-sm font-bold text-muted-foreground shrink-0">3</div>
-              <div>
-                <div class="font-semibold">JP criava o padrao do Layout</div>
-                <div class="text-sm text-muted-foreground">Design manual no Figma/Canva</div>
-              </div>
-            </div>
-
-            <!-- Step 4 -->
-            <div class="flex items-start gap-4 p-4 bg-muted/50 rounded-lg">
-              <div class="w-8 h-8 rounded-full bg-muted flex items-center justify-center text-sm font-bold text-muted-foreground shrink-0">4</div>
-              <div>
-                <div class="font-semibold">Dudes gerava imagens direcionadas pelo JP</div>
-                <div class="text-sm text-muted-foreground">Ida e volta de prompts</div>
-              </div>
-            </div>
-
-            <!-- Step 5 -->
-            <div class="flex items-start gap-4 p-4 bg-muted/50 rounded-lg">
-              <div class="w-8 h-8 rounded-full bg-muted flex items-center justify-center text-sm font-bold text-muted-foreground shrink-0">5</div>
-              <div>
-                <div class="font-semibold">JP ou Dudes criavam o Asset no Layout</div>
-                <div class="text-sm text-muted-foreground">Montagem manual</div>
-              </div>
-            </div>
-
-            <!-- Step 6 -->
-            <div class="flex items-start gap-4 p-4 bg-muted/50 rounded-lg">
-              <div class="w-8 h-8 rounded-full bg-muted flex items-center justify-center text-sm font-bold text-muted-foreground shrink-0">6</div>
-              <div>
-                <div class="font-semibold">JP revisava, ajustava e exportava</div>
-                <div class="text-sm text-muted-foreground">Ajustes finos finais</div>
-              </div>
-            </div>
-
-            <!-- Step 7 -->
-            <div class="flex items-start gap-4 p-4 bg-muted/50 rounded-lg">
-              <div class="w-8 h-8 rounded-full bg-muted flex items-center justify-center text-sm font-bold text-muted-foreground shrink-0">7</div>
-              <div>
-                <div class="font-semibold">Tais legendava e postava</div>
-                <div class="text-sm text-muted-foreground">Agendamento final</div>
-              </div>
-            </div>
+          <div class="flex items-center gap-4 p-3 bg-muted/50 rounded-lg">
+            <div class="w-7 h-7 rounded-full bg-muted flex items-center justify-center text-xs font-bold text-muted-foreground">2</div>
+            <span>Alguem formatava o texto usando um agente separado</span>
           </div>
-
-          <!-- Summary -->
-          <div class="flex flex-wrap gap-4 pt-4 border-t border-border">
-            <div class="flex items-center gap-2 text-sm">
-              <svg class="w-4 h-4 text-destructive" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path>
-              </svg>
-              <span class="text-muted-foreground"><strong class="text-foreground">3-4 pessoas</strong> envolvidas</span>
-            </div>
-            <div class="flex items-center gap-2 text-sm">
-              <svg class="w-4 h-4 text-destructive" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path>
-              </svg>
-              <span class="text-muted-foreground"><strong class="text-foreground">~2 horas</strong> por asset</span>
-            </div>
-            <div class="flex items-center gap-2 text-sm">
-              <svg class="w-4 h-4 text-destructive" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path>
-              </svg>
-              <span class="text-muted-foreground">Processo <strong class="text-foreground">fragmentado</strong></span>
-            </div>
+          <div class="flex items-center gap-4 p-3 bg-muted/50 rounded-lg">
+            <div class="w-7 h-7 rounded-full bg-muted flex items-center justify-center text-xs font-bold text-muted-foreground">3</div>
+            <span>JP criava o padrao do layout no Figma</span>
           </div>
+          <div class="flex items-center gap-4 p-3 bg-muted/50 rounded-lg">
+            <div class="w-7 h-7 rounded-full bg-muted flex items-center justify-center text-xs font-bold text-muted-foreground">4</div>
+            <span>Dudes gerava imagens com IA (ida e volta de prompts)</span>
+          </div>
+          <div class="flex items-center gap-4 p-3 bg-muted/50 rounded-lg">
+            <div class="w-7 h-7 rounded-full bg-muted flex items-center justify-center text-xs font-bold text-muted-foreground">5</div>
+            <span>JP ou Dudes montavam o asset final</span>
+          </div>
+          <div class="flex items-center gap-4 p-3 bg-muted/50 rounded-lg">
+            <div class="w-7 h-7 rounded-full bg-muted flex items-center justify-center text-xs font-bold text-muted-foreground">6</div>
+            <span>JP revisava, ajustava e exportava</span>
+          </div>
+          <div class="flex items-center gap-4 p-3 bg-muted/50 rounded-lg">
+            <div class="w-7 h-7 rounded-full bg-muted flex items-center justify-center text-xs font-bold text-muted-foreground">7</div>
+            <span>Tais legendava e postava</span>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap gap-4 pt-4 border-t border-border text-sm">
+          <span class="text-muted-foreground"><strong class="text-foreground">3-4 pessoas</strong> envolvidas</span>
+          <span class="text-muted-foreground"><strong class="text-foreground">~2 horas</strong> por asset</span>
+          <span class="text-muted-foreground">Processo <strong class="text-foreground">fragmentado</strong></span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- DIVIDER -->
   <div class="section-divider mx-auto max-w-4xl"></div>
 
-  <!-- A TRANSFORMACAO (DEPOIS) -->
+  <!-- A SOLUCAO -->
   <section class="py-24 px-6" id="solucao">
-    <div class="max-w-4xl mx-auto">
-      <div class="space-y-8">
-        <!-- Section header -->
-        <div class="space-y-4">
-          <span class="text-xs font-semibold uppercase tracking-wider text-success">A Transformacao</span>
-          <h2 class="text-3xl md:text-4xl font-bold tracking-tight">
-            O novo processo com BrandOS
-          </h2>
+    <div class="max-w-4xl mx-auto space-y-8">
+      <div class="space-y-4">
+        <span class="text-xs font-semibold uppercase tracking-wider text-success">A Solucao</span>
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight">O novo processo com BrandOS</h2>
+      </div>
+
+      <p class="text-lg text-muted-foreground font-serif leading-relaxed">
+        Um sistema que <strong class="text-foreground">conhece sua marca</strong>, <strong class="text-foreground">entende sua estrategia</strong> e <strong class="text-foreground">cria assets profissionais automaticamente</strong>.
+      </p>
+
+      <div class="bg-card rounded-xl border border-accent/30 glow-accent p-8 space-y-6">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-lg bg-success/10 flex items-center justify-center">
+            <svg class="w-5 h-5 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+          </div>
+          <h3 class="font-bold text-lg">Novo Processo: 2-3 minutos</h3>
         </div>
 
-        <!-- Description -->
-        <p class="text-lg text-muted-foreground font-serif leading-relaxed">
-          BrandOS nao e um "gerador de imagens com IA". Nao e um "Canva turbinado".
-          E um Sistema Criativo Inteligente que <strong class="text-foreground">conhece sua marca</strong>,
-          <strong class="text-foreground">entende sua estrategia</strong> e
-          <strong class="text-foreground">cria assets profissionais em minutos</strong>.
-        </p>
-
-        <!-- The new process -->
-        <div class="bg-card rounded-xl border border-primary/20 glow-gold p-8 space-y-6">
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-lg bg-success/10 flex items-center justify-center">
-              <svg class="w-5 h-5 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-              </svg>
-            </div>
-            <h3 class="font-bold text-lg">Novo Processo: 2-3 minutos por asset</h3>
+        <div class="grid gap-3">
+          <div class="flex items-center gap-4 p-3 bg-accent/5 rounded-lg border border-accent/10">
+            <div class="w-7 h-7 rounded-full bg-accent/20 flex items-center justify-center text-xs font-bold text-accent">1</div>
+            <span>Voce escolhe o que quer criar e insere o conteudo</span>
           </div>
-
-          <div class="grid gap-4">
-            <!-- Step 1 -->
-            <div class="flex items-start gap-4 p-4 bg-primary/5 rounded-lg border border-primary/10">
-              <div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-sm font-bold text-primary shrink-0">1</div>
-              <div>
-                <div class="font-semibold">Criar o conteudo</div>
-                <div class="text-sm text-muted-foreground">Baseado no Curador[IA] ou inserindo texto/link</div>
-              </div>
-            </div>
-
-            <!-- Step 2 -->
-            <div class="flex items-start gap-4 p-4 bg-primary/5 rounded-lg border border-primary/10">
-              <div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-sm font-bold text-primary shrink-0">2</div>
-              <div>
-                <div class="font-semibold">Sistema cria e formata automaticamente</div>
-                <div class="text-sm text-muted-foreground">Texto formatado + imagens geradas + layout aplicado</div>
-              </div>
-            </div>
-
-            <!-- Step 3 -->
-            <div class="flex items-start gap-4 p-4 bg-primary/5 rounded-lg border border-primary/10">
-              <div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-sm font-bold text-primary shrink-0">3</div>
-              <div>
-                <div class="font-semibold">1 pessoa revisa, ajusta e exporta</div>
-                <div class="text-sm text-muted-foreground">Ajustes finais opcionais</div>
-              </div>
-            </div>
-
-            <!-- Step 4 -->
-            <div class="flex items-start gap-4 p-4 bg-primary/5 rounded-lg border border-primary/10">
-              <div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-sm font-bold text-primary shrink-0">4</div>
-              <div>
-                <div class="font-semibold">Programa e posta</div>
-                <div class="text-sm text-muted-foreground">Direto para publicacao</div>
-              </div>
-            </div>
+          <div class="flex items-center gap-4 p-3 bg-accent/5 rounded-lg border border-accent/10">
+            <div class="w-7 h-7 rounded-full bg-accent/20 flex items-center justify-center text-xs font-bold text-accent">2</div>
+            <span>O sistema cria, formata e monta automaticamente</span>
           </div>
-
-          <!-- Summary -->
-          <div class="flex flex-wrap gap-4 pt-4 border-t border-primary/20">
-            <div class="flex items-center gap-2 text-sm">
-              <svg class="w-4 h-4 text-success" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-              </svg>
-              <span class="text-muted-foreground"><strong class="text-primary">1 pessoa</strong> envolvida</span>
-            </div>
-            <div class="flex items-center gap-2 text-sm">
-              <svg class="w-4 h-4 text-success" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-              </svg>
-              <span class="text-muted-foreground"><strong class="text-primary">2-3 minutos</strong> por asset</span>
-            </div>
-            <div class="flex items-center gap-2 text-sm">
-              <svg class="w-4 h-4 text-success" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-              </svg>
-              <span class="text-muted-foreground">Processo <strong class="text-primary">automatizado</strong></span>
-            </div>
+          <div class="flex items-center gap-4 p-3 bg-accent/5 rounded-lg border border-accent/10">
+            <div class="w-7 h-7 rounded-full bg-accent/20 flex items-center justify-center text-xs font-bold text-accent">3</div>
+            <span>Voce revisa, ajusta se quiser, e exporta</span>
           </div>
+        </div>
+
+        <div class="flex flex-wrap gap-4 pt-4 border-t border-accent/20 text-sm">
+          <span class="text-muted-foreground"><strong class="text-accent">1 pessoa</strong></span>
+          <span class="text-muted-foreground"><strong class="text-accent">2-3 minutos</strong></span>
+          <span class="text-muted-foreground"><strong class="text-accent">100% automatizado</strong></span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- DIVIDER -->
   <div class="section-divider mx-auto max-w-4xl"></div>
 
-  <!-- O QUE E O BRANDOS -->
-  <section class="py-24 px-6" id="oque">
-    <div class="max-w-4xl mx-auto">
-      <div class="space-y-8">
-        <!-- Section header -->
-        <div class="space-y-4">
-          <span class="text-xs font-semibold uppercase tracking-wider text-primary">O Que E</span>
-          <h2 class="text-3xl md:text-4xl font-bold tracking-tight">
-            O que o BrandOS faz (e o que NAO e)
-          </h2>
+  <!-- FLUXO REAL -->
+  <section class="py-24 px-6" id="fluxo">
+    <div class="max-w-4xl mx-auto space-y-8">
+      <div class="space-y-4">
+        <span class="text-xs font-semibold uppercase tracking-wider text-accent">Fluxo Real</span>
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight">O que acontece quando voce usa</h2>
+      </div>
+
+      <!-- PASSO 1 -->
+      <div class="bg-card rounded-xl border border-border p-6 space-y-4">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-lg bg-accent flex items-center justify-center text-white font-bold">1</div>
+          <h3 class="font-bold text-lg">Escolha o tipo de asset</h3>
         </div>
-
-        <!-- What it's NOT -->
-        <div class="grid md:grid-cols-3 gap-4">
-          <div class="p-6 rounded-xl bg-card border border-border">
-            <div class="w-10 h-10 rounded-lg bg-destructive/10 flex items-center justify-center mb-4">
-              <svg class="w-5 h-5 text-destructive" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-              </svg>
-            </div>
-            <h3 class="font-bold mb-2">NAO e um gerador de imagens</h3>
-            <p class="text-sm text-muted-foreground font-serif">Nao e tipo Midjourney ou DALL-E onde voce fica ajustando prompts.</p>
+        <p class="text-muted-foreground font-serif">Voce seleciona o que quer criar:</p>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <div class="p-4 bg-muted rounded-lg text-center">
+            <div class="text-2xl mb-2">📱</div>
+            <div class="font-semibold">Carrossel</div>
+            <div class="text-xs text-muted-foreground">Multi-slide para redes</div>
           </div>
-
-          <div class="p-6 rounded-xl bg-card border border-border">
-            <div class="w-10 h-10 rounded-lg bg-destructive/10 flex items-center justify-center mb-4">
-              <svg class="w-5 h-5 text-destructive" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-              </svg>
-            </div>
-            <h3 class="font-bold mb-2">NAO e um Canva turbinado</h3>
-            <p class="text-sm text-muted-foreground font-serif">Nao e uma ferramenta de design onde voce arrasta elementos.</p>
+          <div class="p-4 bg-muted rounded-lg text-center">
+            <div class="text-2xl mb-2">📢</div>
+            <div class="font-semibold">Ads</div>
+            <div class="text-xs text-muted-foreground">Campanhas pagas</div>
           </div>
-
-          <div class="p-6 rounded-xl bg-card border border-border">
-            <div class="w-10 h-10 rounded-lg bg-destructive/10 flex items-center justify-center mb-4">
-              <svg class="w-5 h-5 text-destructive" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-              </svg>
-            </div>
-            <h3 class="font-bold mb-2">NAO e automacao generica</h3>
-            <p class="text-sm text-muted-foreground font-serif">Nao e um Zapier ou Make que conecta coisas sem inteligencia.</p>
+          <div class="p-4 bg-muted rounded-lg text-center">
+            <div class="text-2xl mb-2">🖼️</div>
+            <div class="font-semibold">Posts</div>
+            <div class="text-xs text-muted-foreground">Imagens unicas</div>
+          </div>
+          <div class="p-4 bg-muted rounded-lg text-center">
+            <div class="text-2xl mb-2">📊</div>
+            <div class="font-semibold">Slides</div>
+            <div class="text-xs text-muted-foreground">Aulas e apresentacoes</div>
           </div>
         </div>
+      </div>
 
-        <!-- What it IS -->
-        <div class="bg-card rounded-xl border border-primary/20 p-8 space-y-6">
-          <h3 class="text-xl font-bold">O que o BrandOS REALMENTE faz:</h3>
-
-          <div class="grid gap-6">
-            <div class="flex gap-4">
-              <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-                <span class="text-2xl font-bold text-primary">01</span>
-              </div>
-              <div>
-                <h4 class="font-bold text-lg">CONHECE sua marca profundamente</h4>
-                <p class="text-muted-foreground font-serif">Cores, fontes, tom de voz, o que pode e o que NAO pode. Configurado uma vez, usado sempre.</p>
-              </div>
-            </div>
-
-            <div class="flex gap-4">
-              <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-                <span class="text-2xl font-bold text-primary">02</span>
-              </div>
-              <div>
-                <h4 class="font-bold text-lg">ENTENDE sua estrategia</h4>
-                <p class="text-muted-foreground font-serif">Produtos, funis, campanhas, objetivos. Sabe se e TOFU, MOFU ou BOFU.</p>
-              </div>
-            </div>
-
-            <div class="flex gap-4">
-              <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-                <span class="text-2xl font-bold text-primary">03</span>
-              </div>
-              <div>
-                <h4 class="font-bold text-lg">CRIA assets com qualidade profissional</h4>
-                <p class="text-muted-foreground font-serif">Em minutos, nao horas. Com sua marca aplicada automaticamente.</p>
-              </div>
+      <!-- PASSO 2 -->
+      <div class="bg-card rounded-xl border border-border p-6 space-y-4">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-lg bg-accent flex items-center justify-center text-white font-bold">2</div>
+          <h3 class="font-bold text-lg">Contextualize o produto</h3>
+        </div>
+        <p class="text-muted-foreground font-serif">O sistema ja conhece os produtos da Academia. Voce escolhe:</p>
+        <div class="grid md:grid-cols-2 gap-4">
+          <div>
+            <div class="text-xs font-semibold uppercase text-muted-foreground mb-2">Produtos pre-cadastrados</div>
+            <div class="space-y-2 text-sm">
+              <div class="p-2 bg-muted rounded">Comunidade Lendaria (R$ 1.488)</div>
+              <div class="p-2 bg-muted rounded">Formacao Lendaria (R$ 12.888)</div>
+              <div class="p-2 bg-muted rounded">Gestor IA (R$ 6.888)</div>
+              <div class="p-2 bg-muted rounded">Dominando Obsidian (R$ 288)</div>
             </div>
           </div>
+          <div>
+            <div class="text-xs font-semibold uppercase text-muted-foreground mb-2">Publicos-alvo (ICPs)</div>
+            <div class="space-y-2 text-sm">
+              <div class="p-2 bg-muted rounded">Empreendedor Travado (~30%)</div>
+              <div class="p-2 bg-muted rounded">Executivo Exausto (~25%)</div>
+              <div class="p-2 bg-muted rounded">Tecnico Visionario (~20%)</div>
+              <div class="p-2 bg-muted rounded">Veterano Desprezado (~15%)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PASSO 3 -->
+      <div class="bg-card rounded-xl border border-border p-6 space-y-4">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-lg bg-accent flex items-center justify-center text-white font-bold">3</div>
+          <h3 class="font-bold text-lg">Defina o objetivo e angulo</h3>
+        </div>
+        <div class="grid md:grid-cols-2 gap-4">
+          <div>
+            <div class="text-xs font-semibold uppercase text-muted-foreground mb-2">Objetivo da campanha</div>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 bg-muted rounded-full text-sm">Awareness</span>
+              <span class="px-3 py-1 bg-muted rounded-full text-sm">Consideracao</span>
+              <span class="px-3 py-1 bg-muted rounded-full text-sm">Conversao</span>
+              <span class="px-3 py-1 bg-muted rounded-full text-sm">Retencao</span>
+            </div>
+          </div>
+          <div>
+            <div class="text-xs font-semibold uppercase text-muted-foreground mb-2">Angulo narrativo</div>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 bg-muted rounded-full text-sm">Beneficios</span>
+              <span class="px-3 py-1 bg-muted rounded-full text-sm">Problema-Solucao</span>
+              <span class="px-3 py-1 bg-muted rounded-full text-sm">Prova Social</span>
+              <span class="px-3 py-1 bg-muted rounded-full text-sm">Urgencia</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PASSO 4 -->
+      <div class="bg-card rounded-xl border border-border p-6 space-y-4">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-lg bg-accent flex items-center justify-center text-white font-bold">4</div>
+          <h3 class="font-bold text-lg">Insira o conteudo</h3>
+        </div>
+        <p class="text-muted-foreground font-serif">Cole o texto, link ou ideia que quer transformar em asset. O sistema entende e estrutura automaticamente.</p>
+      </div>
+
+      <!-- PASSO 5 -->
+      <div class="bg-card rounded-xl border border-border p-6 space-y-4">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-lg bg-accent flex items-center justify-center text-white font-bold">5</div>
+          <h3 class="font-bold text-lg">A IA trabalha (6 agentes em sequencia)</h3>
+        </div>
+        <p class="text-muted-foreground font-serif mb-4">Voce ve o progresso em tempo real. Cada agente tem uma funcao:</p>
+        <div class="grid md:grid-cols-2 gap-3">
+          <div class="flex items-center gap-3 p-3 bg-muted rounded-lg">
+            <div class="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center text-xs font-bold text-accent">1</div>
+            <div>
+              <div class="font-semibold text-sm">Brand Strategist</div>
+              <div class="text-xs text-muted-foreground">Escolhe o template e define estrategia</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 p-3 bg-muted rounded-lg">
+            <div class="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center text-xs font-bold text-accent">2</div>
+            <div>
+              <div class="font-semibold text-sm">Story Architect</div>
+              <div class="text-xs text-muted-foreground">Estrutura a narrativa slide por slide</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 p-3 bg-muted rounded-lg">
+            <div class="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center text-xs font-bold text-accent">3</div>
+            <div>
+              <div class="font-semibold text-sm">Copywriter</div>
+              <div class="text-xs text-muted-foreground">Escreve o texto com tom da marca</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 p-3 bg-muted rounded-lg">
+            <div class="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center text-xs font-bold text-accent">4</div>
+            <div>
+              <div class="font-semibold text-sm">Visual Compositor</div>
+              <div class="text-xs text-muted-foreground">Define layout e posicionamento</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 p-3 bg-muted rounded-lg">
+            <div class="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center text-xs font-bold text-accent">5</div>
+            <div>
+              <div class="font-semibold text-sm">Quality Validator</div>
+              <div class="text-xs text-muted-foreground">Valida se esta dentro do brand</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 p-3 bg-muted rounded-lg">
+            <div class="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center text-xs font-bold text-accent">6</div>
+            <div>
+              <div class="font-semibold text-sm">Render Engine</div>
+              <div class="text-xs text-muted-foreground">Gera o visual final</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PASSO 6 -->
+      <div class="bg-card rounded-xl border border-border p-6 space-y-4">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-lg bg-accent flex items-center justify-center text-white font-bold">6</div>
+          <h3 class="font-bold text-lg">Preview e Export</h3>
+        </div>
+        <p class="text-muted-foreground font-serif">Voce ve o resultado final, navega pelos slides, e exporta. Pronto pra postar.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider mx-auto max-w-4xl"></div>
+
+  <!-- TEMPLATES -->
+  <section class="py-24 px-6" id="templates">
+    <div class="max-w-4xl mx-auto space-y-8">
+      <div class="space-y-4">
+        <span class="text-xs font-semibold uppercase tracking-wider text-primary">Templates Inteligentes</span>
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight">A IA escolhe o melhor para seu objetivo</h2>
+      </div>
+
+      <p class="text-lg text-muted-foreground font-serif leading-relaxed">
+        Baseado no seu objetivo e angulo, o sistema seleciona automaticamente o template ideal:
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="bg-card rounded-xl border border-border p-6 space-y-3">
+          <div class="flex items-center justify-between">
+            <h3 class="font-bold">Product Launch</h3>
+            <span class="text-xs px-2 py-1 bg-accent/10 text-accent rounded">8 slides</span>
+          </div>
+          <p class="text-sm text-muted-foreground font-serif">Para lancamentos, cursos e ofertas. Estrutura PAS (Problem-Agitation-Solution) focada em conversao.</p>
+          <div class="text-xs text-muted-foreground">Melhor para: Black Friday, lancamentos, cursos</div>
+        </div>
+
+        <div class="bg-card rounded-xl border border-border p-6 space-y-3">
+          <div class="flex items-center justify-between">
+            <h3 class="font-bold">Educational</h3>
+            <span class="text-xs px-2 py-1 bg-accent/10 text-accent rounded">7 slides</span>
+          </div>
+          <p class="text-sm text-muted-foreground font-serif">Para conteudo educacional e tutoriais. Ensina algo valioso antes de vender.</p>
+          <div class="text-xs text-muted-foreground">Melhor para: dicas, how-to, tutoriais</div>
+        </div>
+
+        <div class="bg-card rounded-xl border border-border p-6 space-y-3">
+          <div class="flex items-center justify-between">
+            <h3 class="font-bold">Social Proof</h3>
+            <span class="text-xs px-2 py-1 bg-accent/10 text-accent rounded">6 slides</span>
+          </div>
+          <p class="text-sm text-muted-foreground font-serif">Para mostrar resultados de clientes. Deixa os clientes falarem por voce.</p>
+          <div class="text-xs text-muted-foreground">Melhor para: depoimentos, cases, resultados</div>
+        </div>
+
+        <div class="bg-card rounded-xl border border-border p-6 space-y-3">
+          <div class="flex items-center justify-between">
+            <h3 class="font-bold">Announcement</h3>
+            <span class="text-xs px-2 py-1 bg-accent/10 text-accent rounded">5 slides</span>
+          </div>
+          <p class="text-sm text-muted-foreground font-serif">Para anuncios e novidades. Direto ao ponto.</p>
+          <div class="text-xs text-muted-foreground">Melhor para: features, updates, news</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- DIVIDER -->
   <div class="section-divider mx-auto max-w-4xl"></div>
 
-  <!-- COMO FUNCIONA (TECNICO SIMPLIFICADO) -->
-  <section class="py-24 px-6" id="como">
-    <div class="max-w-4xl mx-auto">
-      <div class="space-y-8">
-        <!-- Section header -->
-        <div class="space-y-4">
-          <span class="text-xs font-semibold uppercase tracking-wider text-info">Como Funciona</span>
-          <h2 class="text-3xl md:text-4xl font-bold tracking-tight">
-            A magica por tras (explicada simples)
-          </h2>
-        </div>
-
-        <p class="text-lg text-muted-foreground font-serif leading-relaxed">
-          O BrandOS usa <strong class="text-foreground">6 agentes de IA especializados</strong> que trabalham em sequencia.
-          Pense neles como uma equipe de marketing completa que trabalha em segundos.
-        </p>
-
-        <!-- Pipeline Visual -->
-        <div class="relative">
-          <!-- Connection line -->
-          <div class="absolute left-6 top-12 bottom-12 w-0.5 bg-gradient-to-b from-primary via-primary/50 to-primary/20 hidden md:block"></div>
-
-          <div class="grid gap-6">
-            <!-- Agent 1 -->
-            <div class="flex gap-4 md:gap-6">
-              <div class="w-12 h-12 rounded-xl bg-primary flex items-center justify-center shrink-0 relative z-10">
-                <svg class="w-6 h-6 text-background" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-              </div>
-              <div class="bg-card rounded-xl border border-border p-6 flex-1">
-                <div class="flex items-center gap-2 mb-2">
-                  <h4 class="font-bold">Brand Strategist</h4>
-                  <span class="text-xs px-2 py-0.5 rounded bg-primary/10 text-primary">Agente 1</span>
-                </div>
-                <p class="text-sm text-muted-foreground font-serif">Analisa o briefing e seleciona o template ideal. Define a estrategia do conteudo baseado nos seus produtos e funis.</p>
-              </div>
-            </div>
-
-            <!-- Agent 2 -->
-            <div class="flex gap-4 md:gap-6">
-              <div class="w-12 h-12 rounded-xl bg-primary/80 flex items-center justify-center shrink-0 relative z-10">
-                <svg class="w-6 h-6 text-background" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
-                </svg>
-              </div>
-              <div class="bg-card rounded-xl border border-border p-6 flex-1">
-                <div class="flex items-center gap-2 mb-2">
-                  <h4 class="font-bold">Story Architect</h4>
-                  <span class="text-xs px-2 py-0.5 rounded bg-primary/10 text-primary">Agente 2</span>
-                </div>
-                <p class="text-sm text-muted-foreground font-serif">Estrutura a narrativa slide por slide. Garante que a historia tenha começo, meio e fim coerente.</p>
-              </div>
-            </div>
-
-            <!-- Agent 3 -->
-            <div class="flex gap-4 md:gap-6">
-              <div class="w-12 h-12 rounded-xl bg-primary/60 flex items-center justify-center shrink-0 relative z-10">
-                <svg class="w-6 h-6 text-background" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
-                </svg>
-              </div>
-              <div class="bg-card rounded-xl border border-border p-6 flex-1">
-                <div class="flex items-center gap-2 mb-2">
-                  <h4 class="font-bold">Copywriter</h4>
-                  <span class="text-xs px-2 py-0.5 rounded bg-primary/10 text-primary">Agente 3</span>
-                </div>
-                <p class="text-sm text-muted-foreground font-serif">Escreve o copy para cada slide com o tom de voz da Academia. Nada de hype, direto ao ponto.</p>
-              </div>
-            </div>
-
-            <!-- Agent 4 -->
-            <div class="flex gap-4 md:gap-6">
-              <div class="w-12 h-12 rounded-xl bg-primary/40 flex items-center justify-center shrink-0 relative z-10">
-                <svg class="w-6 h-6 text-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                </svg>
-              </div>
-              <div class="bg-card rounded-xl border border-border p-6 flex-1">
-                <div class="flex items-center gap-2 mb-2">
-                  <h4 class="font-bold">Visual Compositor</h4>
-                  <span class="text-xs px-2 py-0.5 rounded bg-primary/10 text-primary">Agente 4</span>
-                </div>
-                <p class="text-sm text-muted-foreground font-serif">Define as especificacoes visuais pixel-perfect. Posicao, tamanho, cores - tudo seguindo o brand.</p>
-              </div>
-            </div>
-
-            <!-- Agent 5 -->
-            <div class="flex gap-4 md:gap-6">
-              <div class="w-12 h-12 rounded-xl bg-primary/30 flex items-center justify-center shrink-0 relative z-10">
-                <svg class="w-6 h-6 text-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-                </svg>
-              </div>
-              <div class="bg-card rounded-xl border border-border p-6 flex-1">
-                <div class="flex items-center gap-2 mb-2">
-                  <h4 class="font-bold">Quality Validator</h4>
-                  <span class="text-xs px-2 py-0.5 rounded bg-primary/10 text-primary">Agente 5</span>
-                </div>
-                <p class="text-sm text-muted-foreground font-serif">Valida se tudo esta dentro do brand. Cores certas, fontes certas, tom certo. Se nao esta, avisa.</p>
-              </div>
-            </div>
-
-            <!-- Agent 6 -->
-            <div class="flex gap-4 md:gap-6">
-              <div class="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center shrink-0 relative z-10">
-                <svg class="w-6 h-6 text-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
-                </svg>
-              </div>
-              <div class="bg-card rounded-xl border border-border p-6 flex-1">
-                <div class="flex items-center gap-2 mb-2">
-                  <h4 class="font-bold">Render Engine</h4>
-                  <span class="text-xs px-2 py-0.5 rounded bg-primary/10 text-primary">Agente 6</span>
-                </div>
-                <p class="text-sm text-muted-foreground font-serif">Gera o HTML/CSS final de cada slide. Pronto para exportar como imagem ou apresentacao.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Tech note -->
-        <div class="bg-muted rounded-lg p-4 border border-border">
-          <p class="text-sm text-muted-foreground">
-            <strong class="text-foreground">Nota tecnica:</strong> O BrandOS usa <strong>Google Gemini</strong> como motor de IA.
-            Os 6 agentes sao orquestrados em sequencia, cada um passando seu output para o proximo.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- DIVIDER -->
-  <div class="section-divider mx-auto max-w-4xl"></div>
-
-  <!-- COMPARATIVO DE VALOR -->
+  <!-- COMPARATIVO -->
   <section class="py-24 px-6" id="valor">
-    <div class="max-w-4xl mx-auto">
-      <div class="space-y-8">
-        <!-- Section header -->
-        <div class="space-y-4">
-          <span class="text-xs font-semibold uppercase tracking-wider text-warning">O Valor Real</span>
-          <h2 class="text-3xl md:text-4xl font-bold tracking-tight">
-            Os numeros que importam
-          </h2>
-        </div>
+    <div class="max-w-4xl mx-auto space-y-8">
+      <div class="space-y-4">
+        <span class="text-xs font-semibold uppercase tracking-wider text-primary">O Valor</span>
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Os numeros que importam</h2>
+      </div>
 
-        <!-- Comparison table -->
-        <div class="overflow-x-auto">
-          <table class="w-full">
-            <thead>
-              <tr class="border-b border-border">
-                <th class="text-left py-4 px-2 font-semibold">Metrica</th>
-                <th class="text-center py-4 px-2 font-semibold text-destructive/80">Antes</th>
-                <th class="text-center py-4 px-2 font-semibold text-success">Com BrandOS</th>
-              </tr>
-            </thead>
-            <tbody class="font-serif">
-              <tr class="border-b border-border/50">
-                <td class="py-4 px-2 text-muted-foreground">Tempo por asset</td>
-                <td class="py-4 px-2 text-center">~2 horas</td>
-                <td class="py-4 px-2 text-center text-primary font-bold">2-3 minutos</td>
-              </tr>
-              <tr class="border-b border-border/50">
-                <td class="py-4 px-2 text-muted-foreground">Pessoas envolvidas</td>
-                <td class="py-4 px-2 text-center">3-4 pessoas</td>
-                <td class="py-4 px-2 text-center text-primary font-bold">1 pessoa</td>
-              </tr>
-              <tr class="border-b border-border/50">
-                <td class="py-4 px-2 text-muted-foreground">Assets por semana</td>
-                <td class="py-4 px-2 text-center">15-20</td>
-                <td class="py-4 px-2 text-center text-primary font-bold">45-60</td>
-              </tr>
-              <tr class="border-b border-border/50">
-                <td class="py-4 px-2 text-muted-foreground">Dependencia de designer</td>
-                <td class="py-4 px-2 text-center">Total</td>
-                <td class="py-4 px-2 text-center text-primary font-bold">Zero</td>
-              </tr>
-              <tr class="border-b border-border/50">
-                <td class="py-4 px-2 text-muted-foreground">Consistencia de marca</td>
-                <td class="py-4 px-2 text-center">~60%</td>
-                <td class="py-4 px-2 text-center text-primary font-bold">95%+</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+      <div class="overflow-x-auto">
+        <table class="w-full">
+          <thead>
+            <tr class="border-b border-border">
+              <th class="text-left py-4 px-2 font-semibold">Metrica</th>
+              <th class="text-center py-4 px-2 font-semibold text-destructive/80">Antes</th>
+              <th class="text-center py-4 px-2 font-semibold text-accent">Com BrandOS</th>
+            </tr>
+          </thead>
+          <tbody class="font-serif">
+            <tr class="border-b border-border/50">
+              <td class="py-4 px-2 text-muted-foreground">Tempo por asset</td>
+              <td class="py-4 px-2 text-center">~2 horas</td>
+              <td class="py-4 px-2 text-center text-accent font-bold">2-3 minutos</td>
+            </tr>
+            <tr class="border-b border-border/50">
+              <td class="py-4 px-2 text-muted-foreground">Pessoas envolvidas</td>
+              <td class="py-4 px-2 text-center">3-4</td>
+              <td class="py-4 px-2 text-center text-accent font-bold">1</td>
+            </tr>
+            <tr class="border-b border-border/50">
+              <td class="py-4 px-2 text-muted-foreground">Assets por semana</td>
+              <td class="py-4 px-2 text-center">15-20</td>
+              <td class="py-4 px-2 text-center text-accent font-bold">45-60</td>
+            </tr>
+            <tr class="border-b border-border/50">
+              <td class="py-4 px-2 text-muted-foreground">Dependencia de designer</td>
+              <td class="py-4 px-2 text-center">Total</td>
+              <td class="py-4 px-2 text-center text-accent font-bold">Zero</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
-        <!-- Big number highlight -->
-        <div class="bg-card rounded-xl border border-primary/20 p-8 text-center space-y-4">
-          <div class="text-6xl md:text-8xl font-bold gradient-gold">40x</div>
-          <div class="text-xl text-muted-foreground font-serif">mais rapido que o processo anterior</div>
-          <div class="text-sm text-muted-foreground">(2 horas = 120 minutos / 3 minutos = 40x)</div>
-        </div>
+      <div class="bg-card rounded-xl border border-primary/20 glow-gold p-8 text-center space-y-4">
+        <div class="text-6xl md:text-8xl font-bold gradient-gold">40x</div>
+        <div class="text-xl text-muted-foreground font-serif">mais rapido</div>
       </div>
     </div>
   </section>
 
-  <!-- DIVIDER -->
   <div class="section-divider mx-auto max-w-4xl"></div>
 
-  <!-- COMO USAR (ONBOARDING) -->
-  <section class="py-24 px-6" id="usar">
-    <div class="max-w-4xl mx-auto">
-      <div class="space-y-8">
-        <!-- Section header -->
-        <div class="space-y-4">
-          <span class="text-xs font-semibold uppercase tracking-wider text-primary">Como Usar</span>
-          <h2 class="text-3xl md:text-4xl font-bold tracking-tight">
-            Comecando com o BrandOS
-          </h2>
-        </div>
-
-        <p class="text-lg text-muted-foreground font-serif leading-relaxed">
-          O BrandOS esta acessivel em <strong class="text-foreground">localhost:5173</strong> quando rodando localmente.
-          Aqui esta o passo a passo para a equipe comecar:
-        </p>
-
-        <!-- Steps -->
-        <div class="grid gap-6">
-          <!-- Step 1 -->
-          <div class="bg-card rounded-xl border border-border p-6">
-            <div class="flex items-start gap-4">
-              <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center shrink-0 text-background font-bold">1</div>
-              <div class="space-y-2">
-                <h3 class="font-bold text-lg">Acesse o app</h3>
-                <p class="text-muted-foreground font-serif">Abra <code class="bg-muted px-2 py-1 rounded text-sm">http://localhost:5173</code> no navegador. Faca login com suas credenciais.</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Step 2 -->
-          <div class="bg-card rounded-xl border border-border p-6">
-            <div class="flex items-start gap-4">
-              <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center shrink-0 text-background font-bold">2</div>
-              <div class="space-y-2">
-                <h3 class="font-bold text-lg">Configure sua marca (uma vez so)</h3>
-                <p class="text-muted-foreground font-serif">No dashboard, va em <strong class="text-foreground">Brand</strong>. Configure cores, fontes, tom de voz, e exemplos de copy. Isso alimenta todos os agentes.</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Step 3 -->
-          <div class="bg-card rounded-xl border border-border p-6">
-            <div class="flex items-start gap-4">
-              <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center shrink-0 text-background font-bold">3</div>
-              <div class="space-y-2">
-                <h3 class="font-bold text-lg">Gere seu primeiro asset</h3>
-                <p class="text-muted-foreground font-serif">Va em <strong class="text-foreground">Generate</strong> (ou <strong class="text-foreground">Generate V2</strong> para o pipeline novo). Escolha o tipo de asset, insira o tema, e clique em gerar.</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Step 4 -->
-          <div class="bg-card rounded-xl border border-border p-6">
-            <div class="flex items-start gap-4">
-              <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center shrink-0 text-background font-bold">4</div>
-              <div class="space-y-2">
-                <h3 class="font-bold text-lg">Revise e exporte</h3>
-                <p class="text-muted-foreground font-serif">O sistema gera 3 variacoes. Escolha a melhor, faca ajustes finos se necessario, e exporte para HTML ou imagem.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Routes reference -->
-        <div class="bg-muted rounded-xl p-6 space-y-4">
-          <h4 class="font-bold">Rotas disponiveis no app:</h4>
-          <div class="grid gap-2 font-mono text-sm">
-            <div class="flex justify-between items-center py-2 border-b border-border/50">
-              <span class="text-muted-foreground">/</span>
-              <span>Landing page publica</span>
-            </div>
-            <div class="flex justify-between items-center py-2 border-b border-border/50">
-              <span class="text-muted-foreground">/login</span>
-              <span>Tela de login</span>
-            </div>
-            <div class="flex justify-between items-center py-2 border-b border-border/50">
-              <span class="text-muted-foreground">/app/brand</span>
-              <span>Dashboard de marca</span>
-            </div>
-            <div class="flex justify-between items-center py-2 border-b border-border/50">
-              <span class="text-muted-foreground">/app/generate</span>
-              <span>Wizard de geracao V1</span>
-            </div>
-            <div class="flex justify-between items-center py-2 border-b border-border/50">
-              <span class="text-primary">/app/generate-v2</span>
-              <span class="text-primary">Wizard V2 (6 agentes)</span>
-            </div>
-            <div class="flex justify-between items-center py-2 border-b border-border/50">
-              <span class="text-muted-foreground">/app/library</span>
-              <span>Biblioteca de assets</span>
-            </div>
-            <div class="flex justify-between items-center py-2">
-              <span class="text-muted-foreground">/app/settings</span>
-              <span>Configuracoes (API key)</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- DIVIDER -->
-  <div class="section-divider mx-auto max-w-4xl"></div>
-
-  <!-- PROXIMOS PASSOS -->
-  <section class="py-24 px-6" id="proximos">
-    <div class="max-w-4xl mx-auto">
-      <div class="space-y-8">
-        <!-- Section header -->
-        <div class="space-y-4">
-          <span class="text-xs font-semibold uppercase tracking-wider text-info">Roadmap</span>
-          <h2 class="text-3xl md:text-4xl font-bold tracking-tight">
-            Proximos passos planejados
-          </h2>
-        </div>
-
-        <p class="text-lg text-muted-foreground font-serif leading-relaxed">
-          O BrandOS esta em <strong class="text-foreground">versao 0.9.0</strong>. Estas sao as melhorias planejadas:
-        </p>
-
-        <!-- Roadmap items -->
-        <div class="grid gap-4">
-          <div class="flex items-center gap-4 p-4 bg-card rounded-lg border border-border">
-            <div class="w-8 h-8 rounded-full bg-warning/10 flex items-center justify-center shrink-0">
-              <div class="w-2 h-2 rounded-full bg-warning"></div>
-            </div>
-            <div>
-              <span class="font-semibold">Validacao automatica on-brand</span>
-              <span class="text-muted-foreground font-serif text-sm ml-2">- Sistema avisa se algo esta fora da marca</span>
-            </div>
-          </div>
-
-          <div class="flex items-center gap-4 p-4 bg-card rounded-lg border border-border">
-            <div class="w-8 h-8 rounded-full bg-warning/10 flex items-center justify-center shrink-0">
-              <div class="w-2 h-2 rounded-full bg-warning"></div>
-            </div>
-            <div>
-              <span class="font-semibold">Aprendizado com assets campeoes</span>
-              <span class="text-muted-foreground font-serif text-sm ml-2">- Transforma top performers em templates</span>
-            </div>
-          </div>
-
-          <div class="flex items-center gap-4 p-4 bg-card rounded-lg border border-border">
-            <div class="w-8 h-8 rounded-full bg-warning/10 flex items-center justify-center shrink-0">
-              <div class="w-2 h-2 rounded-full bg-warning"></div>
-            </div>
-            <div>
-              <span class="font-semibold">Postagem automatica</span>
-              <span class="text-muted-foreground font-serif text-sm ml-2">- Direto para Instagram, LinkedIn, etc.</span>
-            </div>
-          </div>
-
-          <div class="flex items-center gap-4 p-4 bg-card rounded-lg border border-border">
-            <div class="w-8 h-8 rounded-full bg-muted flex items-center justify-center shrink-0">
-              <div class="w-2 h-2 rounded-full bg-muted-foreground"></div>
-            </div>
-            <div>
-              <span class="font-semibold">Export PNG/PDF</span>
-              <span class="text-muted-foreground font-serif text-sm ml-2">- Atualmente so HTML</span>
-            </div>
-          </div>
-
-          <div class="flex items-center gap-4 p-4 bg-card rounded-lg border border-border">
-            <div class="w-8 h-8 rounded-full bg-muted flex items-center justify-center shrink-0">
-              <div class="w-2 h-2 rounded-full bg-muted-foreground"></div>
-            </div>
-            <div>
-              <span class="font-semibold">Mais templates</span>
-              <span class="text-muted-foreground font-serif text-sm ml-2">- Alem dos 4 atuais (product-launch, educational, social-proof, announcement)</span>
-            </div>
-          </div>
-        </div>
-      </div>
+  <!-- CTA FINAL -->
+  <section class="py-24 px-6">
+    <div class="max-w-4xl mx-auto text-center space-y-8">
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Pronto para comecar?</h2>
+      <p class="text-lg text-muted-foreground font-serif">Acesse o BrandOS e crie seu primeiro asset em minutos.</p>
+      <a href="https://branding-os-nu.vercel.app/" target="_blank" class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-accent hover:bg-accent/90 text-white font-semibold transition-colors">
+        Acessar BrandOS
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+      </a>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer class="py-16 px-6 border-t border-border">
-    <div class="max-w-4xl mx-auto text-center space-y-6">
-      <!-- Logo -->
-      <div class="flex justify-center">
-        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" viewBox="0 0 320 320" class="text-primary/50">
-          <path fill="currentColor" d="M247.258 18.749A63.908 63.908 0 0 0 202.029 0h-84.091a63.906 63.906 0 0 0-45.229 18.749L18.748 72.596C6.749 84.596 0 100.961 0 117.944v84.095c0 16.866 6.75 33.232 18.748 45.231l53.978 53.981A63.907 63.907 0 0 0 117.954 320h84.092a63.908 63.908 0 0 0 45.228-18.749l53.978-53.981A63.91 63.91 0 0 0 320 202.039v-84.095a63.913 63.913 0 0 0-18.748-45.231l-53.978-53.98-.016.016Zm3.749 45.964c2 0 3.117.25 3.866.367.867 3.366 1 16-10.865 39.865-5.5 11.116-12.749 22.732-21.248 34.481a410.027 410.027 0 0 0-20.364-21.865c-7.25-7.25-14.499-14-21.865-20.366 7.616-5.5 15.249-10.5 22.731-14.866 27.231-15.866 42.479-17.499 47.729-17.499v-.117h.016Zm-44.362 95.212c-6.999 8.25-14.498 16.366-22.364 24.365-7.999 8-16.115 15.5-24.364 22.366-8.249-7-16.365-14.366-24.364-22.366-8-7.999-15.499-16.115-22.365-24.365 6.999-8.25 14.499-16.366 22.365-24.365 7.865-8 16.115-15.5 24.364-22.366 8.249 7 16.365 14.366 24.364 22.366 7.999 7.999 15.498 16.115 22.364 24.365ZM90.707 36.865c7.25-7.25 16.865-11.25 27.114-11.25h84.091c10.249 0 19.865 4 27.114 11.25l4.616 4.616c-20.997 5.117-46.978 18.866-73.842 39.115-26.864-20.25-52.844-33.865-73.842-39.115l4.616-4.616h.133ZM65.093 65.097c.617-.117 1.867-.367 3.867-.367 15.865 0 38.612 12.25 47.728 17.5 7.499 4.365 15.115 9.365 22.731 14.865-7.366 6.366-14.615 13.116-21.865 20.366a410.071 410.071 0 0 0-20.364 21.865c-8.5-11.749-15.748-23.365-21.248-34.481C64.077 80.979 64.193 68.363 65.077 64.98v.117h.016Zm-28.23 164.058c-7.25-7.25-11.249-16.866-11.249-27.116v-84.095c0-10.25 4-19.866 11.249-27.115l4.616-4.617c5.116 20.999 18.865 46.981 38.98 73.846-20.249 26.866-33.864 52.848-38.98 73.847l-4.616-4.617v-.133Zm31.98 25.982c-2 0-3.117-.25-3.866-.367-.867-3.366-1-15.999 10.865-39.865 5.5-11.116 12.749-22.732 21.248-34.481a410.071 410.071 0 0 0 20.364 21.865c7.25 7.25 14.499 14 21.865 20.366-7.616 5.5-15.249 10.5-22.731 14.866-27.23 15.866-42.48 17.499-47.728 17.499v.117h-.017Zm160.3 27.865c-7.249 7.25-16.865 11.249-27.114 11.249h-84.091c-10.249 0-19.865-3.999-27.114-11.249l-4.616-4.617c20.997-5.116 46.978-18.865 73.842-39.114 26.864 20.249 52.845 33.865 73.842 39.114l-4.616 4.617h-.133Zm25.614-28.232c-.617.117-1.867.367-3.866.367-15.865 0-38.613-12.25-47.729-17.499-7.499-4.367-15.115-9.367-22.731-14.866a410.464 410.464 0 0 0 21.865-20.366 410.027 410.027 0 0 0 20.364-21.865c8.499 11.749 15.748 23.365 21.248 34.481 11.865 23.866 11.749 36.482 10.865 39.865v-.117h-.016Zm39.479-52.864c0 10.25-4 19.866-11.249 27.115l-4.616 4.617c-5.116-20.999-18.865-46.981-38.979-73.846 20.248-26.866 33.863-52.848 38.979-73.847l4.616 4.617c7.249 7.25 11.249 16.866 11.249 27.115v84.229Z"/>
-        </svg>
-      </div>
-
-      <p class="text-muted-foreground font-serif">
-        BrandOS v0.9.0 | Academia Lendaria
-      </p>
-
-      <p class="text-sm text-muted-foreground">
-        Ultima atualizacao: Dezembro 2025
-      </p>
+    <div class="max-w-4xl mx-auto text-center space-y-4">
+      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" viewBox="0 0 320 320" class="text-primary/30 mx-auto">
+        <path fill="currentColor" d="M247.258 18.749A63.908 63.908 0 0 0 202.029 0h-84.091a63.906 63.906 0 0 0-45.229 18.749L18.748 72.596C6.749 84.596 0 100.961 0 117.944v84.095c0 16.866 6.75 33.232 18.748 45.231l53.978 53.981A63.907 63.907 0 0 0 117.954 320h84.092a63.908 63.908 0 0 0 45.228-18.749l53.978-53.981A63.91 63.91 0 0 0 320 202.039v-84.095a63.913 63.913 0 0 0-18.748-45.231l-53.978-53.98Z"/>
+      </svg>
+      <p class="text-muted-foreground">BrandOS v0.9.0 | Academia Lendaria | Dezembro 2025</p>
     </div>
   </footer>
 
-  <!-- Scroll progress script -->
   <script>
     window.addEventListener('scroll', () => {
-      const scrollProgress = document.getElementById('scrollProgress');
-      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const progress = (scrollTop / scrollHeight) * 100;
-      scrollProgress.style.width = progress + '%';
+      const p = document.getElementById('scrollProgress');
+      const s = document.documentElement.scrollTop || document.body.scrollTop;
+      const h = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      p.style.width = (s / h) * 100 + '%';
     });
   </script>
 </body>
